@@ -19,7 +19,7 @@ import useWeb3Modal from "../../hooks/useWeb3Modal";
 const Web3 = require("web3");
 
 const Stake = ({userTokens}) => {
-    const [, , , chainId, account] = useWeb3Modal();
+    const [, , , chainId, ] = useWeb3Modal();
     const web3 = new Web3(window.ethereum);
     const [userTokensStaked, setUserTokensStaked] = useState(0);
     const [tokensAllowance, setTokensAllowance] = useState(0);

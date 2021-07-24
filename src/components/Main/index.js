@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import contracts from "../../contracts";
 import {
-    Row,
-    Col,
-    Button,
-    Container,
     Card
   }  from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
@@ -22,7 +18,7 @@ const Main = () => {
     useEffect(() => {
         const loadTokensFromAccount = async (chainId) => {
             const homeCoinAddress = contracts.addresses[chainId].homeCoin;
-            if (homeCoinAddress != "") {
+            if (homeCoinAddress !== "") {
                 let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
                 const tokens = await token.methods
                     .balanceOf(window.ethereum.selectedAddress)
@@ -44,7 +40,7 @@ const Main = () => {
                     ) : (
                         <div>
                             <Card.Title>You don't have any HomeCoin yet</Card.Title>
-                            <Card.Text>You can go to <a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" target="_blank">Uniswap</a> to buy HomeCoins</Card.Text>
+                            <Card.Text>You can go to <a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" target="_blank" rel="noopener noreferrer">Uniswap</a> to buy HomeCoins</Card.Text>
                         </div>
                     )}
                 </Card.Body>

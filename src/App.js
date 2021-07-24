@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { WalletButton } from './WalletButton';
 import useWeb3Modal from "./hooks/useWeb3Modal";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import contracts from './contracts';
 import Main from './components/Main';
 
@@ -9,15 +9,14 @@ import {
   Row,
   Col,
   Container,
-  Navbar,
-  Nav
+  Navbar
 }  from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
-  const [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, account] = useWeb3Modal();
+  const [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, ] = useWeb3Modal();
   const [homeCoinAddress, setHomeCoinAddress] = useState('');
   const [etherscanUrl, setEtherscanUrl] = useState('');
 
@@ -70,7 +69,7 @@ const App = () => {
             <Col>
                 <div>
                   <p className="text-right"></p>
-                  <p className="text-right mr-5"><strong>NETWORK: {contracts.chainsNetworkName[chainId]} HOMECoin: <a href={etherscanUrl} target="_blank">{homeCoinAddress}</a></strong></p>
+                  <p className="text-right mr-5"><strong>NETWORK: {contracts.chainsNetworkName[chainId]} HOMECoin: <a href={etherscanUrl} rel="noopener noreferrer" target="_blank">{homeCoinAddress}</a></strong></p>
                 </div>
             </Col>
           </Row>

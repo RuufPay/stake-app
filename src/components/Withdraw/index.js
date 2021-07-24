@@ -3,11 +3,9 @@ import contracts from "../../contracts";
 import {
     Row,
     Col,
-    InputGroup,
     Button,
     Container,
     Card,
-    FormControl,
     Modal,
     Spinner
   }  from 'react-bootstrap';
