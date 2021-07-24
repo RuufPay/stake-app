@@ -41,10 +41,10 @@ const App = () => {
           <Row>
             <Col>
               <Navbar expand="lg" sticky="top" className="px-5">
-                <Navbar.Brand href="/">
+                <Navbar.Brand href="/stake-app">
                 <img
                   alt=""
-                  src="/HomeLogo.png"
+                  src="/stake-app/HomeLogo.png"
                   width="171px"
                   height="64px"
                 />{' '}

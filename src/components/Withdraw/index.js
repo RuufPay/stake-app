@@ -21,7 +21,6 @@ const Withdraw = () => {
     const [userTokenRewards, setUserTokenRewards] = useState(0);
     const [stakeDate, setStakeDate] = useState(0);
     const [diffStakeDate, setDiffStakeDate] = useState('');
-    const [months, setMonths] = useState(1);
     const [ir, setIr] = useState(0);
     const [showSpinner, setShowSpinner] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -41,7 +40,6 @@ const Withdraw = () => {
                 setUserTokenRewards(web3.utils.fromWei(userData.pendingRewards.toString(),'ether'));
                 setStakeDate(new Date(userData.stakeDate * 1e3).toUTCString());
                 setDiffStakeDate(timeDiffCalc(Date.now(), new Date(userData.stakeDate * 1e3)));
-                setIr(userData.multiplier);
                 setWithdrawalButtonDisabled(false);
             }
         }

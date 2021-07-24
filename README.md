@@ -18,3 +18,10 @@ For testing
 yarn start
 ```
 
+## Deploy with GitHub Pages
+```sh
+yarn deploy
+```
+
+The deployment url is https://ruufpay.github.io/stake-app/
+
