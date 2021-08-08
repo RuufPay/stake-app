@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import contracts from "../../contracts";
 import NumberFormat from 'react-number-format';
 import Stake from '../Stake';
@@ -10,10 +10,10 @@ const Web3 = require("web3");
 const Main = () => {
     const [, , , chainId, account] = useWeb3Modal();
     const web3 = new Web3(window.ethereum);
-    const [userTokens, setUserTokens] = useState(0);
-    const [stakedTokens, setStakedTokens] = useState(0);
+    const [userTokens, setUserTokens] = useState(null);
+    const [stakedTokens, setStakedTokens] = useState(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const loadTokensFromAccount = async (chainId) => {
             const homeCoinAddress = contracts.addresses[chainId].homeCoin;
             if (homeCoinAddress != "") {
@@ -49,8 +49,8 @@ const Main = () => {
                             <div>
                                 { stakedTokens === 0 ? (
                                     <div>
-                                        <h3>You don't have any Home Coin in your wallet</h3>
-                                        <p>You can go to <a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank"><strong>Uniswap</strong></a> to buy Home Coins</p>
+                                        <h3>You don't have any Home Coins in your wallet</h3>
+                                        <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank"></a>Buy HOME on Uniswap</p>
                                     </div>
                                 ) : ""}
                             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import contracts from "../../contracts";
 import {
     Button,
@@ -23,7 +23,7 @@ const Withdraw = () => {
     const [showModal, setShowModal] = useState(false);
     const [withdrawalButtonDisabled, setWithdrawalButtonDisabled] = useState(true);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const getTokensStakedInFarm = async () => {
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
@@ -106,7 +106,7 @@ const Withdraw = () => {
                         <div class="title1 col-12">
                             <h6 class="clscheme">Withdraw your tokens</h6>
                             <h2>
-                                <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens staked.
+                                Home Coins staked: <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} />
                             </h2>
                         </div>
                         <div class="form col-12 ez-animate text-center" data-animation="fadeInUp">
@@ -133,12 +133,12 @@ const Withdraw = () => {
                     <Modal.Title>Withdraw tokens</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>You are going to withdraw: <NumberFormat displayType={'text'} value={totalTokensWithdraw()} thousandSeparator={true} decimalSeparator={"."} decimalScale={6}/> Home Coins</p>
+                    <p>You are going to withdraw <NumberFormat displayType={'text'} value={totalTokensWithdraw()} thousandSeparator={true} decimalSeparator={"."} decimalScale={2}/> Home Coins</p>
                     <p>Are you sure?</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowModal(false)}>No</Button>
                     <Button variant="primary" onClick={() => withdrawTokens()}>Yes</Button>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>No</Button>
                 </Modal.Footer>
             </Modal>
         </div>

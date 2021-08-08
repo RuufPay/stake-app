@@ -95,7 +95,7 @@ const Stake = ({userTokens}) => {
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
 
-            if (homeCoinAddress !== "" && stakeFarmAddress !== "") {
+            if (homeCoinAddress != "" && stakeFarmAddress != "") {
                 const numAllowed = await homeCoin.methods
                     .allowance(window.ethereum.selectedAddress, stakeFarmAddress)
                     .call({ from: window.ethereum.selectedAddress });
@@ -205,15 +205,15 @@ const Stake = ({userTokens}) => {
             ) : "" }
             <Modal show={showModal}>
                 <Modal.Header closeButton onClick={() => setShowModal(false)}>
-                    <Modal.Title>Stake farm</Modal.Title>
+                    <Modal.Title>Stake Farm</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>You are going to send <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={6} /> tokens to the farm.</p>
+                    <p>You are going to send <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens to the farm.</p>
                     <p>Are you sure?</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowModal(false)}>No</Button>
                     <Button variant="primary" onClick={() => stakeTokens()}>Yes</Button>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>No</Button>
                 </Modal.Footer>
             </Modal>
         </div>

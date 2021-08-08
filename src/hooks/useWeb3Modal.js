@@ -61,6 +61,7 @@ function useWeb3Modal(config = {}) {
     provider.on("connect", async (info) => {
       console.log("METAMASK connected:", info);
       setChainId(info.chainId);
+      window.location.reload();
     });
 
     provider.on("disconnect", async (error) => {

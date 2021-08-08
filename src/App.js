@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { WalletButton } from './WalletButton';
 import useWeb3Modal from "./hooks/useWeb3Modal";
 import { BrowserRouter } from 'react-router-dom';
@@ -12,10 +12,10 @@ import {
 
 const App = () => {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, account] = useWeb3Modal();
-  const [homeCoinAddress, setHomeCoinAddress] = useState('');
-  const [etherscanUrl, setEtherscanUrl] = useState('');
+  const [homeCoinAddress, setHomeCoinAddress] = useState(null);
+  const [etherscanUrl, setEtherscanUrl] = useState();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     loadHomeCoinAddress();
     etherscanTokenUrl();
   },[chainId]);
@@ -34,7 +34,7 @@ const App = () => {
       <BrowserRouter>
           <nav class="navbar-1 navigationscheme navbar navbar-expand-lg py-3">
             <div class="container navbar-container">
-              <a class="navbar-brand" href="/"><img src="./stake-app/HomeLogo.png" width="171px" height="64px" alt="RuufPay" /></a>
+              <a class="navbar-brand" href="/"><img src="/stake-app/HomeLogo.png" width="171px" height="64px" alt="RuufPay" /></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -52,7 +52,7 @@ const App = () => {
             <div class="container">
     		      <div class="row">
     			      <div class="col-12">
-                    {window.ethereum ? (
+                    {window.ethereum?.selectedAddress ? (
     				        <ul>
 						          <li><strong>NETWORK: {contracts.chainsNetworkName[chainId]}</strong></li>
                       <li>&nbsp;-&nbsp;</li>
@@ -75,7 +75,7 @@ const App = () => {
               <div class="footer-widget">
                 <div class="row">
                   <div class="left col-md-6">
-                    <a href="/"><img src="./stake-app/HomeLogo.png" width="171px" height="64px" alt="RuffPay" /></a>
+                    <a href="/"><img src="/stake-app/HomeLogo.png" width="171px" height="64px" alt="RuffPay" /></a>
                   </div>
                   <div class="right col-md-6">
                     <div class="social-links">
