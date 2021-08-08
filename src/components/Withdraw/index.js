@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import contracts from "../../contracts";
 import {
-    Row,
-    Col,
     Button,
-    Container,
-    Card,
     Modal,
     Spinner
   }  from 'react-bootstrap';
@@ -21,6 +17,7 @@ const Withdraw = () => {
     const [userTokenRewards, setUserTokenRewards] = useState(0);
     const [stakeDate, setStakeDate] = useState(0);
     const [diffStakeDate, setDiffStakeDate] = useState('');
+    const [months, setMonths] = useState(1);
     const [ir, setIr] = useState(0);
     const [showSpinner, setShowSpinner] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -40,6 +37,7 @@ const Withdraw = () => {
                 setUserTokenRewards(web3.utils.fromWei(userData.pendingRewards.toString(),'ether'));
                 setStakeDate(new Date(userData.stakeDate * 1e3).toUTCString());
                 setDiffStakeDate(timeDiffCalc(Date.now(), new Date(userData.stakeDate * 1e3)));
+                setIr(userData.multiplier);
                 setWithdrawalButtonDisabled(false);
             }
         }
@@ -93,45 +91,49 @@ const Withdraw = () => {
         difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes`; 
     
         return difference;
-      }
+    }
+
+    const totalTokensWithdraw = () => {
+        return Number(userTokensStaked) + Number(userTokenRewards);
+    }
 
     return (
         <div>
             { userTokensStaked > 0 ? (
-            <Card className="text-center mt-3">
-                <Card.Body>
-                    <Card.Title>Withdraw your tokens</Card.Title>
-                    <Container fluid>
-                        <Card.Text>Stake date: {stakeDate}</Card.Text>
-                        <Card.Text>Staked for {diffStakeDate}</Card.Text>
-                        <Card.Text>
-                            <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens staked.
-                        </Card.Text>
-                        <Card.Text>
-                            <NumberFormat displayType={'text'} value={userTokenRewards} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens as intereset rate.
-                        </Card.Text>
-                        <Row>
-                            <Col></Col>
-                            <Col>
-                                <Button disabled={withdrawalButtonDisabled} onClick={() => setShowModal(true)} className="my-3 px-5">
-                                    { showSpinner ? (<Spinner animation="border" size="sm" className="mr-2" />) : "" }
-                                    Withdraw
-                                </Button>
-                            </Col>
-                            <Col></Col>
-                        </Row>
-                    </Container>
-                </Card.Body>
-            </Card>
+            <div id="section-subscribe1">
+                <div class="container">
+                    <div class="row">
+                        <div class="title1 col-12">
+                            <h6 class="clscheme">Withdraw your tokens</h6>
+                            <h2>
+                                <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens staked.
+                            </h2>
+                        </div>
+                        <div class="form col-12 ez-animate text-center" data-animation="fadeInUp">
+                            <p>Stake date: {stakeDate}</p>
+                            <p></p>
+                            <p></p>
+                            <p>Staked for {diffStakeDate}</p>
+                            <p></p>
+                            <p>
+                                <NumberFormat displayType={'text'} value={userTokenRewards} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens as intereset rate.
+                            </p>
+                            <p></p>
+                            <button disabled={withdrawalButtonDisabled} onClick={() => setShowModal(true)} class="shadow1 style3 bgscheme mx-3 my-3 px-5">
+                                { showSpinner ? (<Spinner animation="border" size="sm" class="mr-2" />) : "" }
+                                WITHDRAW
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             ) : "" }
             <Modal show={showModal}>
                 <Modal.Header closeButton onClick={() => setShowModal(false)}>
                     <Modal.Title>Withdraw tokens</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>You are going to get:</p>
-                    <p><NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={6} /> tokens staked.</p>
-                    <p><NumberFormat displayType={'text'} value={userTokenRewards} thousandSeparator={true} decimalSeparator={"."} decimalScale={6} /> tokens as intereset rate.</p>
+                    <p>You are going to withdraw: <NumberFormat displayType={'text'} value={totalTokensWithdraw()} thousandSeparator={true} decimalSeparator={"."} decimalScale={6}/> Home Coins</p>
                     <p>Are you sure?</p>
                 </Modal.Body>
                 <Modal.Footer>

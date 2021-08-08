@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import contracts from "../../contracts";
-import {
-    Card
-  }  from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import Stake from '../Stake';
 import Withdraw from '../Withdraw';
@@ -14,17 +11,26 @@ const Main = () => {
     const [, , , chainId, account] = useWeb3Modal();
     const web3 = new Web3(window.ethereum);
     const [userTokens, setUserTokens] = useState(0);
+    const [stakedTokens, setStakedTokens] = useState(0);
 
     useEffect(() => {
         const loadTokensFromAccount = async (chainId) => {
             const homeCoinAddress = contracts.addresses[chainId].homeCoin;
-            if (homeCoinAddress !== "") {
+            if (homeCoinAddress != "") {
                 let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
                 const tokens = await token.methods
                     .balanceOf(window.ethereum.selectedAddress)
-                    .call({ from: window.ethereum.selectedAddress });
-                          
+                    .call({ from: window.ethereum.selectedAddress });                          
                 setUserTokens(web3.utils.fromWei(tokens,'ether'));
+            }
+
+            const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
+            if (stakeFarmAddress != "") {
+                let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
+                const data = await stakeFarm.methods
+                    .getUserData(window.ethereum.selectedAddress)
+                    .call({ from: window.ethereum.selectedAddress });                          
+                setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
             }
         }
           
@@ -32,21 +38,44 @@ const Main = () => {
       },[chainId, account]);
 
     return (
-        <div>
-            <Card className="text-center mt-3" style={{ border: '0px' }}>
-                <Card.Body>
-                    { userTokens > 0 ? (
-                        <Card.Title>You have <NumberFormat displayType={'text'} value={userTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> HomeCoins in your wallet</Card.Title>
-                    ) : (
+        <div id="section-testimonial1">
+            <div class="container">
+                <div class="title1">
+                    { window.ethereum?.selectedAddress ? (
                         <div>
-                            <Card.Title>You don't have any HomeCoin yet</Card.Title>
-                            <Card.Text>You can go to <a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" target="_blank" rel="noopener noreferrer">Uniswap</a> to buy HomeCoins</Card.Text>
+                        { userTokens > 0 ? (
+                            <h3>You have <NumberFormat displayType={'text'} value={userTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> Home Coins in your wallet</h3>
+                        ) : (
+                            <div>
+                                { stakedTokens === 0 ? (
+                                    <div>
+                                        <h3>You don't have any Home Coin in your wallet</h3>
+                                        <p>You can go to <a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank"><strong>Uniswap</strong></a> to buy Home Coins</p>
+                                    </div>
+                                ) : ""}
+                            </div>
+                        )}
                         </div>
-                    )}
-                </Card.Body>
-            </Card>
-            <Stake userTokens={userTokens}/>
-            <Withdraw />
+                    ) : 
+                        <div>
+                            <h3>Please, connect your wallet</h3>
+                        </div>
+                    }
+                </div>
+                { stakedTokens === 0 ? (
+                    <div>
+                        <Stake userTokens={userTokens}/>
+                        <p></p>
+                        <Withdraw />
+                    </div>
+                ) : (
+                    <div>
+                        <Withdraw />
+                        <p></p>
+                        <Stake userTokens={userTokens}/>
+                    </div>
+                ) }
+            </div>
         </div>
     );
 }

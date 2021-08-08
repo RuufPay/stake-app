@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import contracts from "../../contracts";
 import {
-    Row,
-    Col,
-    InputGroup,
     Button,
-    Container,
-    Card,
-    FormControl,
     Modal,
     Spinner
   }  from 'react-bootstrap';
@@ -19,7 +13,7 @@ import useWeb3Modal from "../../hooks/useWeb3Modal";
 const Web3 = require("web3");
 
 const Stake = ({userTokens}) => {
-    const [, , , chainId, ] = useWeb3Modal();
+    const [, , , chainId, account] = useWeb3Modal();
     const web3 = new Web3(window.ethereum);
     const [userTokensStaked, setUserTokensStaked] = useState(0);
     const [tokensAllowance, setTokensAllowance] = useState(0);
@@ -182,61 +176,32 @@ const Stake = ({userTokens}) => {
     return (
         <div>
             { userTokens > 0 ? (
-            <Card className="text-center">
-                <Card.Body>
-                    <Card.Title className="mb-3">Stake your HomeCoins to earn more</Card.Title>
-                    <Card.Text>Enter the amount of tokens you want to stake.</Card.Text>
-                    <Container fluid>
-                        <Row className="mt-3">
-                            <Col xs={12} md={2}></Col>
-                            <Col xs={12} md={8}>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                    <InputGroup.Text className="px-3">HomeCoins</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                    <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" type="number" value={userTokensStaked} onChange={ event => changeHomeCoinsAmount(event.target.value) } placeholder="Enter the amount to stake" />
-                                    <Button onClick={() => onMax()}>Max</Button>
-                                </InputGroup>
-                            </Col>
-                            <Col xs={12} md={2}></Col>
-                        </Row>
-                        <Row hidden="true" className="mt-3">
-                            <Col xs={12} md={2}></Col>
-                            <Col xs={12} md={8}>
-                                <Card.Text >Simulate how many HomeCoins you can earn (<NumberFormat displayType={'text'} value={irTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} suffix={' HomeCoins'} />)</Card.Text>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                    <InputGroup.Text className="px-3">Months in stake</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                    <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" type="number" defaultValue={months} onChange={ event => changeMonths(event.target.value) } placeholder="Enter the months in stake" />
-                                </InputGroup>
-                            </Col>
-                            <Col xs={12} md={2}></Col>
-                        </Row>
-                        <Row className="mt-3">
-                            <Col xs={12} md={2}></Col>
-                            <Col xs={12} md={8}></Col>
-                            <Col xs={12} md={2}></Col>
-                        </Row>
-                        <Row>
-                            <Col></Col>
-                            <Col>
+            <div id="section-subscribe1">
+                <div class="container">
+                    <div class="row">
+                        <div class="title1 col-12">
+                            <h6 class="clscheme">Stake your Home Coins to earn more</h6>
+					        <h2>Enter the amount of Home Coins you want to stake.</h2>
+                        </div>
+                        <div class="form col-12 ez-animate text-center" data-animation="fadeInUp">
+                            <input type="number" placeholder="0" value={userTokensStaked} onChange={ event => changeHomeCoinsAmount(event.target.value) } />
+                            <button type="submit" class="shadow1 bgscheme" onClick={() => onMax()}>MAX</button>
+                            <div>
                                 {showApproveButton ? (
-                                    <Button disabled={approveButtonDisabled} onClick={() => approveStakeTokens()} className="mx-3 my-3 px-5">
+                                    <button disabled={approveButtonDisabled} onClick={() => approveStakeTokens()} class="shadow1 style3 bgscheme mx-3 my-3 px-5">
                                         { showApproveSpinner ? (<Spinner animation="border" size="sm" className="mr-2" />) : "" }
-                                        Approve
-                                    </Button>
+                                        APPROVE
+                                    </button>
                                 ):
-                                <Button disabled={isDisabledStake() || stakeButtonDisabled} onClick={() => setShowModal(true)} className="my-3 px-5">
+                                <button disabled={isDisabledStake() || stakeButtonDisabled} onClick={() => setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
                                     { showStakeSpinner ? (<Spinner animation="border" size="sm" className="mr-2" />) : "" }
-                                    Stake
-                                </Button>}
-                            </Col>
-                            <Col></Col>
-                        </Row>
-                    </Container>
-                </Card.Body>
-            </Card>
+                                    STAKE
+                                </button>}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             ) : "" }
             <Modal show={showModal}>
                 <Modal.Header closeButton onClick={() => setShowModal(false)}>
