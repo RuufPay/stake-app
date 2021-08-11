@@ -16,26 +16,35 @@ const Main = () => {
     useLayoutEffect(() => {
         const loadTokensFromAccount = async (chainId) => {
             const homeCoinAddress = contracts.addresses[chainId].homeCoin;
-            if (homeCoinAddress != "") {
+            if (homeCoinAddress !== "") {
                 let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
                 const tokens = await token.methods
                     .balanceOf(window.ethereum.selectedAddress)
                     .call({ from: window.ethereum.selectedAddress });                          
                 setUserTokens(web3.utils.fromWei(tokens,'ether'));
+                console.log('setusertokens');
+                console.log(userTokens);
             }
 
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
-            if (stakeFarmAddress != "") {
+            if (stakeFarmAddress !== "") {
                 let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
                 const data = await stakeFarm.methods
                     .getUserData(window.ethereum.selectedAddress)
                     .call({ from: window.ethereum.selectedAddress });                          
                 setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
+                console.log('setstakedtokens');
+                console.log(stakedTokens);
             }
         }
           
         loadTokensFromAccount(chainId);
-      },[chainId, account]);
+    },[chainId, account]);
+
+    const showWalletMessage = (() => {
+        if ((userTokens === 0) && (stakedTokens === 0)) return true
+        return false;
+    });
 
     return (
         <div id="section-testimonial1">
@@ -47,12 +56,12 @@ const Main = () => {
                             <h3>You have <NumberFormat displayType={'text'} value={userTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> Home Coins in your wallet</h3>
                         ) : (
                             <div>
-                                { stakedTokens === 0 ? (
+                                { (showWalletMessage()) ? (
                                     <div>
                                         <h3>You don't have any Home Coins in your wallet</h3>
                                         <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank"></a>Buy HOME on Uniswap</p>
                                     </div>
-                                ) : ""}
+                                ) : "" }
                             </div>
                         )}
                         </div>

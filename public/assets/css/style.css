@@ -1421,7 +1421,7 @@ a.animated-button.style2:hover:after {
     overflow: hidden;
 }
 #section-testimonial1 .title1{
-	z-index: 9999;
+	/*z-index: 9999;*/
     margin-bottom: 30px;
 }
 #section-testimonial1 .container.testimonial1{

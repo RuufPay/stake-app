@@ -95,7 +95,7 @@ const Stake = ({userTokens}) => {
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
 
-            if (homeCoinAddress != "" && stakeFarmAddress != "") {
+            if (homeCoinAddress !== "" && stakeFarmAddress !== "") {
                 const numAllowed = await homeCoin.methods
                     .allowance(window.ethereum.selectedAddress, stakeFarmAddress)
                     .call({ from: window.ethereum.selectedAddress });
