@@ -21,11 +21,8 @@ const App = () => {
   },[chainId]);
 
   const showWalletMessage = (() => {
-    console.log('chainId', chainId);
-    console.log('showWalletMessage', contracts.addresses[chainId].homeCoin)
-    if (contracts.addresses[chainId].homeCoin === "") return true
+    if (contracts.addresses[chainId].stakeFarm === "") return true
     
-    console.log('return false');
     return false;
   });
 
