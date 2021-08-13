@@ -22,8 +22,6 @@ const Main = () => {
                     .balanceOf(window.ethereum.selectedAddress)
                     .call({ from: window.ethereum.selectedAddress });                          
                 setUserTokens(web3.utils.fromWei(tokens,'ether'));
-                console.log('setusertokens');
-                console.log(userTokens);
             }
 
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
@@ -33,8 +31,6 @@ const Main = () => {
                     .getUserData(window.ethereum.selectedAddress)
                     .call({ from: window.ethereum.selectedAddress });                          
                 setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
-                console.log('setstakedtokens');
-                console.log(stakedTokens);
             }
         }
           
@@ -42,7 +38,9 @@ const Main = () => {
     },[chainId, account]);
 
     const showWalletMessage = (() => {
-        if ((userTokens === 0) && (stakedTokens === 0)) return true
+        if ((userTokens == null) && (stakedTokens == null)) return true
+        else if ((userTokens == 0) && (stakedTokens == 0)) return true
+        
         return false;
     });
 
@@ -59,7 +57,7 @@ const Main = () => {
                                 { (showWalletMessage()) ? (
                                     <div>
                                         <h3>You don't have any Home Coins in your wallet</h3>
-                                        <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank"></a>Buy HOME on Uniswap</p>
+                                        <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank">Buy HOME on Uniswap</a></p>
                                     </div>
                                 ) : "" }
                             </div>

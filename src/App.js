@@ -20,6 +20,15 @@ const App = () => {
     etherscanTokenUrl();
   },[chainId]);
 
+  const showWalletMessage = (() => {
+    console.log('chainId', chainId);
+    console.log('showWalletMessage', contracts.addresses[chainId].homeCoin)
+    if (contracts.addresses[chainId].homeCoin === "") return true
+    
+    console.log('return false');
+    return false;
+  });
+
   const loadHomeCoinAddress = () => {
     setHomeCoinAddress(contracts.addresses[chainId].homeCoin);
   }
@@ -66,7 +75,17 @@ const App = () => {
           <Row className="pb-5">
             <Col xs={12} md={2}></Col>
             <Col xs={12} md={8}>
-              <Main></Main>
+              { showWalletMessage() === false ? (
+                <Main></Main>
+              ) : 
+                <div id="section-testimonial1">
+                  <div class="container">
+                    <div class="title1">
+                      <h3>WRONG NETWORK. PLEASE, CONNECTO TO MAINNET</h3>
+                    </div>
+                  </div>
+                </div>
+              }
             </Col>
             <Col xs={12} md={2}></Col>
           </Row>
