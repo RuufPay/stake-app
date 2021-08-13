@@ -81,7 +81,7 @@ const App = () => {
                 <div id="section-testimonial1">
                   <div class="container">
                     <div class="title1">
-                      <h3>WRONG NETWORK. PLEASE, CONNECTO TO MAINNET</h3>
+                      <h3>WRONG NETWORK. PLEASE, CONNECT TO MAINNET</h3>
                     </div>
                   </div>
                 </div>
