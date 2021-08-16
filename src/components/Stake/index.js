@@ -180,12 +180,13 @@ const Stake = ({userTokens}) => {
                 <div class="container">
                     <div class="row">
                         <div class="title1 col-12">
-                            <h6 class="clscheme">Stake your Home Coins to earn more</h6>
-					        <h2>Enter the amount of Home Coins you want to stake.</h2>
+                            <h3 class="clscheme">Stake your Home Coins to earn more</h3>
+                            <p></p>
+					        <p class="bolder">Enter the amount of Home Coins you want to stake.</p>
                         </div>
                         <div class="form col-12 ez-animate text-center" data-animation="fadeInUp">
                             <input type="number" placeholder="0" value={userTokensStaked} onChange={ event => changeHomeCoinsAmount(event.target.value) } />
-                            <button type="submit" class="shadow1 bgscheme" onClick={() => onMax()}>MAX</button>
+                            <button type="" class="shadow1 bgscheme" onClick={() => onMax()}>MAX</button>
                             <div>
                                 {showApproveButton ? (
                                     <button disabled={approveButtonDisabled} onClick={() => approveStakeTokens()} class="shadow1 style3 bgscheme mx-3 my-3 px-5">

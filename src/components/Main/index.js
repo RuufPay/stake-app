@@ -45,44 +45,45 @@ const Main = () => {
     });
 
     return (
-        <div id="section-testimonial1">
-            <div class="container">
-                <div class="title1">
-                    { window.ethereum?.selectedAddress ? (
-                        <div>
-                        { userTokens > 0 ? (
-                            <h3>You have <NumberFormat displayType={'text'} value={userTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> Home Coins in your wallet</h3>
-                        ) : (
+        <div>
+            <div id="section-testimonial1">
+                <div class="container">
+                    <div class="title1">
+                        { window.ethereum?.selectedAddress ? (
                             <div>
-                                { (showWalletMessage()) ? (
-                                    <div>
-                                        <h3>You don't have any Home Coins in your wallet</h3>
-                                        <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank">Buy HOME on Uniswap</a></p>
-                                    </div>
-                                ) : "" }
+                            { userTokens > 0 ? (
+                                <h2>You have <NumberFormat displayType={'text'} value={userTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> Home Coins in your wallet</h2>
+                            ) : (
+                                <div>
+                                    { (showWalletMessage()) ? (
+                                        <div>
+                                            <h2>You don't have any Home Coins in your wallet</h2>
+                                            <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank">Buy HOME on Uniswap</a></p>
+                                        </div>
+                                    ) : "" }
+                                </div>
+                            )}
                             </div>
-                        )}
-                        </div>
-                    ) : 
-                        <div>
-                            <h3>Please, connect your wallet</h3>
-                        </div>
-                    }
+                        ) : 
+                            <div>
+                                <h3>Please, connect your wallet</h3>
+                            </div>
+                        }
+                    </div>
                 </div>
-                { stakedTokens === 0 ? (
-                    <div>
-                        <Stake userTokens={userTokens}/>
-                        <p></p>
-                        <Withdraw />
-                    </div>
-                ) : (
-                    <div>
-                        <Withdraw />
-                        <p></p>
-                        <Stake userTokens={userTokens}/>
-                    </div>
-                ) }
             </div>
+            { stakedTokens === 0 ? (
+                <div>
+                    <Stake userTokens={userTokens}/>
+                    <p></p>
+                    <Withdraw />
+                </div>
+            ) : (
+                <div>
+                    <Withdraw />
+                    <Stake userTokens={userTokens}/>
+                </div>
+            ) }
         </div>
     );
 }

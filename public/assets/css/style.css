@@ -19,11 +19,11 @@ Version		: 1.0.0
 	2.3 Buttons
 		2.3.1 Button 1
 		2.3.2 Button 2
-		
+
 	2.4 Margin & Padding & Space & Shadow
 	2.5 Titles
 		2.5.1 Title1
-		
+
 	2.6 Backgrounds
 		2.6.1 Background 1
 	2.7 Section Preloader
@@ -39,7 +39,7 @@ Version		: 1.0.0
 		4.1.1 Slider 1
 		4.1.2 Slider 1
 	4.2 SECTION CLIENTS 1
-	4.3 SECTION FEATURES 1 
+	4.3 SECTION FEATURES 1
 	4.4 SECTION FEATURES 2
 	4.5 SECTION APP SCREEN 1
 	4.6 SECTION PRICING 1
@@ -56,7 +56,7 @@ Version		: 1.0.0
 06. RESPONSIVE
 
 07. COLOR SCHEME
-	
+
 
 */
 /*============================
@@ -65,7 +65,7 @@ Version		: 1.0.0
 /**
  * 1.1 Poppins
  */
-@font-face {
+ @font-face {
     font-family: 'Poppins-Regular';
     src: url('../fonts/poppins/Poppins-Regular.eot');
     src: url('../fonts/poppins/Poppins-Regular.eot?#iefix') format('embedded-opentype'),
@@ -217,7 +217,7 @@ h1, h2, h3, h4, h5, h6 {
   	margin-left: 20px; /*space between*/
   	-webkit-transition:all 0.2s ease-in-out;
   	transition:all 0.2s ease-in-out;
-} 
+}
 .social-links a i{
 	font-size: 18px;
 	line-height: 43px;
@@ -230,7 +230,7 @@ h1, h2, h3, h4, h5, h6 {
 	box-shadow:none;
 	-webkit-transition:all 0.2s ease-in-out;
 	transition:all 0.2s ease-in-out;
-} 
+}
 .social-links a:hover i{
   	color:#343434;
   	transition:all 0.2s ease-in-out;
@@ -240,19 +240,13 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 50px;
 }
 
-.button {
-	font-family: 'Poppins-Regular';
-    font-size: 14px;
-	text-align: center;
-}
-
 /**
  * 2.3 Buttons
  */
 /* 2.3.1 Button 1 */
 .btn-1,.btn-1:focus{
 	font-family: 'Poppins-Regular';
-    font-size: 14px;
+    font-size: 12px;
     color: #ffffff;
     border-radius: 30px;
     width: 100%;
@@ -383,6 +377,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 2.5.1 Title1 */
 .title1{
 	text-align: center;
+	margin-top: 40px;
 	margin-bottom: 40px;
 }
 .title1 h6{
@@ -911,7 +906,7 @@ a.animated-button.style2:hover:after {
  * 3.4 Section Subheader 1
  */
 #section-subheader1 {
-    padding: 30px 0 30px;
+    padding: 160px 0 70px;
     background: #f7f7f7;
     text-align: center;
 }
@@ -968,15 +963,18 @@ a.animated-button.style2:hover:after {
  */
 
 #section-slider1{
-	height: 100%;
-    width: 100%;
+	height: 200px;
+	width: 100%;
+	position: relative;
 }
+
 #section-slider1 .swiper-container {
 	width: 100%;
 	height: 100%;
 	margin-left: auto;
-    margin-right: auto;
+	margin-right: auto;
 }
+
 #section-slider1 .swiper-slide {
 	/* Center slide text vertically */
 	display: -webkit-box;
@@ -1004,7 +1002,6 @@ a.animated-button.style2:hover:after {
 }
 #section-slider1 .swiper-slide .slider-content{
 	z-index: 9;
-	top: 56px;
 	width: 100%;
 	position: relative;
 }
@@ -1016,7 +1013,6 @@ a.animated-button.style2:hover:after {
 }
 #section-slider1 .swiper-slide .slider-content .left{
 	height: 100%;
-    transform: translateY(40%);
 }
 #section-slider1 .swiper-slide .slider-content .left p{
 	font-family: 'Poppins-Regular';
@@ -1295,7 +1291,7 @@ a.animated-button.style2:hover:after {
 #section-appscreen1 .item{
 	text-align: center;
 	width: auto !important;
-	
+
 }
 #section-appscreen1 .owl-item.center > div {
     -webkit-box-shadow: 0 0 50px -22px #64a0e8;
@@ -1313,7 +1309,7 @@ a.animated-button.style2:hover:after {
     height: 10px;
     top: 1px;
     position: relative;
-    
+
 }
 #section-appscreen1 .owl-theme .owl-dots .owl-dot:hover span{
 	background: #628bea;
@@ -1417,13 +1413,10 @@ a.animated-button.style2:hover:after {
  *  4.7 SECTION TESTIMONIAL 1 *
  *============================*/
 #section-testimonial1{
-    padding: 60px 0;
+    padding: 10px 0;
     overflow: hidden;
 }
-#section-testimonial1 .title1{
-	/*z-index: 9999;*/
-    margin-bottom: 30px;
-}
+
 #section-testimonial1 .container.testimonial1{
 	position: relative;
 }
@@ -1482,7 +1475,7 @@ a.animated-button.style2:hover:after {
 #section-testimonial1 .owl-item.active{
 	-webkit-box-shadow: 0 22px 45px -20px rgba(20, 37, 76, 0.50);
     box-shadow: 0 22px 45px -20px rgba(20, 37, 76, 0.50);
-    
+
 }
 #section-testimonial1 .item img{
 	width: auto;
@@ -1535,7 +1528,7 @@ a.animated-button.style2:hover:after {
     height: 10px;
     top: 1px;
     position: relative;
-    
+
 }
 #section-testimonial1 .owl-theme .owl-dots .owl-dot:hover span{
 	background: #628bea;
@@ -1558,47 +1551,48 @@ a.animated-button.style2:hover:after {
  *   4.8 SECTION SUBSCRIBE 1  *
  *============================*/
 #section-subscribe1{
-	padding:110px 0;
+	padding: 10px;
+	padding-bottom: 80px;
 	background: #ecf2ff;
 }
 #section-subscribe1 .title1{
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
-#section-subscribe1 div{
+#section-subscribe1 form{
 	text-align: center;
 }
-#section-subscribe1 div input{
+#section-subscribe1 input{
 	font-family: 'Poppins-Medium';
-	font-size: 16px; 
+	font-size: 16px;
     color: #555556;
 	border-radius: 40px;
 	width: 100%;
 	max-width: 560px;
 	padding: 22px 35px;
 }
-#section-subscribe1 .div ::-webkit-input-placeholder {
-	font-family: 'Poppins-Medium';
-	font-size: 16px; 
-    color: #555556;
-}
-#section-subscribe1 .div ::-moz-placeholder {
+#section-subscribe1 ::-webkit-input-placeholder {
 	font-family: 'Poppins-Medium';
 	font-size: 16px;
     color: #555556;
 }
-#section-subscribe1 .div :-ms-input-placeholder {
+#section-subscribe1 ::-moz-placeholder {
 	font-family: 'Poppins-Medium';
 	font-size: 16px;
     color: #555556;
 }
-#section-subscribe1 .div :-moz-placeholder {
+#section-subscribe1 :-ms-input-placeholder {
 	font-family: 'Poppins-Medium';
-	font-size: 16px; 
+	font-size: 16px;
+    color: #555556;
+}
+#section-subscribe1 :-moz-placeholder {
+	font-family: 'Poppins-Medium';
+	font-size: 16px;
     color: #555556;
 }
 #section-subscribe1 button{
 	font-family: 'Poppins-Medium';
-    font-size: 16px;
+    font-size: 12px;
     color: #ffffff;
     letter-spacing: 2px;
     border-radius: 50px;
@@ -1807,7 +1801,7 @@ a.animated-button.style2:hover:after {
 
 #section-contact1 .left ::-webkit-input-placeholder {
 	font-family: 'Poppins-Medium';
-	font-size: 18px; 
+	font-size: 18px;
     color: #555556;
 }
 #section-contact1 .left ::-moz-placeholder {
@@ -1822,7 +1816,7 @@ a.animated-button.style2:hover:after {
 }
 #section-contact1 .left :-moz-placeholder {
 	font-family: 'Poppins-Medium';
-	font-size: 18px; 
+	font-size: 18px;
     color: #555556;
 }
 #section-contact1 .left button{
@@ -2125,7 +2119,7 @@ a.animated-button.style2:hover:after {
 
 #section-blogdetail1 .leave-comment ::-webkit-input-placeholder {
 	font-family: 'Poppins-Medium';
-	font-size: 16px; 
+	font-size: 16px;
     color: #555556;
 }
 #section-blogdetail1 .leave-comment ::-moz-placeholder {
@@ -2140,7 +2134,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .leave-comment :-moz-placeholder {
 	font-family: 'Poppins-Medium';
-	font-size: 16px; 
+	font-size: 16px;
     color: #555556;
 }
 #section-blogdetail1 .leave-comment button{
@@ -2241,7 +2235,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .searchbar ::-webkit-input-placeholder {
 	font-family: 'Poppins-Medium';
-	font-size: 16px; 
+	font-size: 16px;
     color: #555556;
 }
 #section-blogdetail1 .sidebar .searchbar ::-moz-placeholder {
@@ -2256,7 +2250,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .searchbar :-moz-placeholder {
 	font-family: 'Poppins-Medium';
-	font-size: 16px; 
+	font-size: 16px;
     color: #555556;
 }
 
@@ -2268,7 +2262,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .recent-posts h3{
 	font-family: 'Poppins-Medium';
-	font-size: 20px; 
+	font-size: 20px;
     color: #555556;
     margin-bottom: 23px;
 }
@@ -2290,7 +2284,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .recent-posts .item h4{
 	font-family: 'Poppins-Medium';
-	font-size: 18px; 
+	font-size: 18px;
 	color: #343434;
 	margin-bottom: 10px;
 }
@@ -2301,7 +2295,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .recent-posts .item h5{
 	font-family: 'Poppins-Medium';
-	font-size: 16px; 
+	font-size: 16px;
 	color: #2da9ca;
 	margin-bottom: 30px;
 	-webkit-transition: all 0.2s ease-in-out;
@@ -2310,7 +2304,7 @@ a.animated-button.style2:hover:after {
 
 #section-blogdetail1 .sidebar .recent-posts .item p{
 	font-family: 'Poppins-Medium';
-	font-size: 18px; 
+	font-size: 18px;
 	color: #5f5f5f;
 	line-height: 31px;
 	margin-bottom: 0;
@@ -2324,7 +2318,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .categories h3{
 	font-family: 'Poppins-Medium';
-	font-size: 20px; 
+	font-size: 20px;
     color: #555556;
     margin-bottom: 23px;
 }
@@ -2338,7 +2332,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .categories ul li a{
 	font-family: 'Poppins-Medium';
-	font-size: 18px; 
+	font-size: 18px;
 	color: #555556;
 }
 #section-blogdetail1 .sidebar .categories ul li:not(:last-of-type){
@@ -2365,7 +2359,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .tags h3{
 	font-family: 'Poppins-Medium';
-	font-size: 20px; 
+	font-size: 20px;
     color: #555556;
     margin-bottom: 23px;
 }
@@ -2380,7 +2374,7 @@ a.animated-button.style2:hover:after {
 }
 #section-blogdetail1 .sidebar .tags ul li a{
 	font-family: 'Poppins-Medium';
-	font-size: 18px; 
+	font-size: 18px;
 	color: #555556;
 }
 #section-blogdetail1 .sidebar .tags ul li a:hover{
@@ -2391,9 +2385,8 @@ a.animated-button.style2:hover:after {
  *    05. SECTION FOOTER     *
  *===========================*/
 #section-footer{
-	background-image: url(../images/bg-footer.png);
-	background-repeat: no-repeat;
-	background-position: bottom;
+	position: relative;
+	background: #503aab;
 	background-size: cover;
 	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
@@ -2407,16 +2400,16 @@ a.animated-button.style2:hover:after {
 }
 #section-footer .footer-copyright{
 	width: 100%;
-	padding: 20px 0;
 	text-align: center;
-	border-top: 2px solid #ffffff;
-	padding: 55px 0;
+	padding: 10px 0;
+	background: #49359e;
 }
 #section-footer .footer-copyright p{
 	font-family: 'Poppins-Regular';
-    font-size: 14px;
-    color: #ffffff;
-    margin-bottom: 0;
+	font-size: 12px;
+	color: #7b66d2;
+	margin-bottom: 0;
+	text-transform: uppercase;
 }
 #section-footer .footer-copyright p a:hover{
     color: #343434;
@@ -2449,16 +2442,13 @@ a.animated-button.style2:hover:after {
 	    right: 30px;
 	}
 	#section-testimonial1 .title1 {
-	    margin-bottom: 90px;
+	    margin-bottom: 30px;
 	}
 	#section-testimonial1 img.bg-testimonial {
 	    top: -135px;
 	}
 }
 @media only screen and ( min-width:1200px ) and ( max-width: 1400px ){
-	#section-slider1 .swiper-slide .slider-content .left {
-	    transform: translateY(24%);
-	}
 	#section-slider1 .swiper-slide .slider-content .right img{
 		max-width: 69%;
 	}
@@ -2492,6 +2482,11 @@ a.animated-button.style2:hover:after {
 	    padding-left: 85px;
 	}
 }
+
+#section-slider1 .swiper-slide .slider-content .left h1 {
+	font-size: 32px;
+}
+
 @media only screen and ( max-width: 1199px ){
 	#section-testimonial1 .title1 {
 	    margin-bottom: 40px;
@@ -2561,6 +2556,7 @@ a.animated-button.style2:hover:after {
 		visibility: hidden;
 		width: 100%;
 	}
+
 	.navbar-1.navbar .dropdown {
 		position: static;
 	}
@@ -2643,6 +2639,10 @@ a.animated-button.style2:hover:after {
 	}
 	#section-slider1 .swiper-slide .slider-content .left li {
 	    width: 45%;
+	}
+	.left.col-12.col-sm-12.col-md-7 {
+		flex: 1;
+		max-width: 100%;
 	}
 	#section-clients1{
 		padding:80px 0;
@@ -2727,13 +2727,16 @@ a.animated-button.style2:hover:after {
 	#section-blogdetail1{
 		padding:80px 0;
 	}
-
+	.right.ez-animate.col-12.col-sm-12.col-md-5.animated.fadeInRight {
+		display: none;
+	}
 }
 
 @media only screen and ( max-width: 767px ) {
 	h2{
 		font-size: 28px !important;
 	}
+
 	/** NAVIGATION **/
 	.navbar-1 .product-heading, .navbar-1 .shop-heading {
 		border-bottom: 1px solid #ddd;
@@ -2776,7 +2779,6 @@ a.animated-button.style2:hover:after {
 	}
 	#section-slider1 .swiper-slide .slider-content .left h1 {
 	    font-size: 35px;
-	    margin-bottom: 20px;
 	}
 	#section-slider1 .swiper-slide .slider-content .left p {
 	    line-height: 28px;
@@ -3071,6 +3073,9 @@ a.animated-button.style2:hover:after {
 #color-switcher .switcher-content .list-color span.scheme4 {
     background-image: linear-gradient(120deg, #ffc882 0%, #ff8baa 100%);
 }
+#color-switcher .switcher-content .list-color span.scheme5 {
+	background-image: linear-gradient(120deg, #6089e8 0%, #7bb2fd 100%);
+}
 
 #color-switcher .switcher-footer h6{
 	font-family: 'Poppins-Regular';
@@ -3089,26 +3094,23 @@ a.animated-button.style2:hover:after {
  * Scheme 1
  */
 #section-slider1{
-	background-image: url(../images/slider1.jpg);
-    background-size: cover;
-    background-position: bottom;
-    -webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	background: linear-gradient(60deg, rgb(57 69 169) 0%, rgb(133 30 175) 100%);
 }
+
 .bgscheme{
-	background-image: linear-gradient(120deg, #6089e8 0%, #7bb2fd 100%);
+	background-image: linear-gradient(120deg, #4141aa 0%, #8c51b3 100%);
 	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
 .bgsolidscheme,
 #section-bloglist1 a.bghoverscheme:hover .time{
-	background: #628bea;
+	background: #574dce;
 	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
 .clscheme,
 #section-bloglist1 a.bghoverscheme:hover h3.clscheme{
-	color: #4d81de;
+	color: #574dce;
 	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }

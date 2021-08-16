@@ -104,7 +104,7 @@ const Withdraw = () => {
                 <div class="container">
                     <div class="row">
                         <div class="title1 col-12">
-                            <h6 class="clscheme">Withdraw your tokens</h6>
+                            <h3 class="clscheme">Withdraw your tokens</h3>
                             <h2>
                                 Home Coins staked: <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} />
                             </h2>
