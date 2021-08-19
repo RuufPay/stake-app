@@ -22,8 +22,8 @@ export default {
     stakeFarm: ""
   },
   [chainsTypeId.RINKEBY]: {
-    homeCoin: "0xf9DD32cCECFeed23EcbFF0165BBF579907f30a40",
-    stakeFarm: "0xdf81d4CfC470A9e76386721Ff251a478C3275DD1"
+    homeCoin: "0x3460fcA73f770932eA9FF80c2D3AfA2A6ab4a18e",
+    stakeFarm: "0x425D8F1349fdce8D83714E09352105e2feDf1b7C"
   },
   [chainsTypeId.ROPSTEN]: {
     homeCoin: "",

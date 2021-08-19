@@ -87,20 +87,20 @@ const App = () => {
         */}
 
         { chainId === 0 ? 
-          <div id="section-testimonial1">
+          <div id="section-blogdetail1">
             <div class="container">
               <div class="title1 mt-5">
-                <h3>PLEASE CONNECT YOUR WALLET USING METAMASK</h3>
+                <h3>Earn staking rewards. Connect a wallet.</h3>
               </div>
             </div>
           </div>
         :
         [
           stakeFarm === false ? 
-            <div id="section-testimonial1">
+            <div id="section-blogdetail1">
               <div class="container">
                 <div class="title1 mt-5">
-                  <h3>UNSUPPORTED NETWORK.</h3>
+                  <h3>Unsupported network. Be sure you are in Ethereum mainnet.</h3>
                 </div>
               </div>
             </div>
@@ -119,14 +119,13 @@ const App = () => {
             <div class="footer-widget">
               <div class="row">
                 <div class="left col-md-6">
-                  <a href="/"><img src="/stake-app/HomeLogo.png" width="171px" height="64px" alt="RuffPay" /></a>
                 </div>
                 <div class="right col-md-6">
                   <div class="social-links">
                     <a href="https://twitter.com/ruufpay" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/twitter-brands.svg" width="22px" height="22px" /></a>
                     <a href="https://www.facebook.com/ruufpay/" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/facebook-brands.svg" width="22px" height="22px" /></a>
                     <a href="https://www.instagram.com/ruufpay/" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/instagram-brands.svg" width="22px" height="22px" /></a>
-                    <a href="https://t.me/myhomecoin" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/telegram-brands.svg" width="22px" height="22px" /></a>
+                    <a href="https://t.me/ruufpay_app" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/telegram-brands.svg" width="22px" height="22px" /></a>
                     <a href="https://discord.gg/3KqcXd6Agb" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/discord-brands.svg" width="22px" height="22px" /></a>
                     <a href="https://www.reddit.com/r/RuufPay/" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/reddit-brands.svg" width="22px" height="22px" /></a>
                     <a href="https://medium.com/@content_18770" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/medium-brands.svg" width="22px" height="22px" /></a>
@@ -137,7 +136,7 @@ const App = () => {
         </div>
         <div class="footer-copyright container-fluid ">
           <div class="col-12">
-            <p>© 2019 Copyrights <a href="https://themeforest.net/user/puricreative/portfolio">PuriCreative</a></p>
+            <p>© 2021 Copyrights RuufPay</p>
           </div>
         </div>
       </div>
