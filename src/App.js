@@ -95,7 +95,7 @@ const App = () => {
             </div>
           </div>
         :
-        [
+        /*[
           stakeFarm === false ? 
             <div id="section-blogdetail1">
               <div class="container">
@@ -105,7 +105,8 @@ const App = () => {
               </div>
             </div>
           : <Main></Main>
-        ]
+        ]*/
+        <Main></Main>
         }
         <div id="section-footer">
           <div class="custom-shape-divider-top-1628808112">

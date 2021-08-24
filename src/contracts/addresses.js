@@ -7,7 +7,7 @@ export default {
   },
   [chainsTypeId.ETH]: {
     homeCoin: "0xAF585c15daB8C363087c572758AC75E82C467579",
-    stakeFarm: "0x425D8F1349fdce8D83714E09352105e2feDf1b7C"
+    stakeFarm: ""
   },
   [chainsTypeId.POLYGON]: {
     homeCoin: "",
