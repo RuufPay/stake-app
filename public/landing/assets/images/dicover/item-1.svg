@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="202" height="202" viewBox="0 0 202 202">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.059" y1="0.064" x2="0.926" y2="0.946" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4d44b8"/>
+      <stop offset="1" stop-color="#9244b8"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_445" data-name="Group 445" transform="translate(-4743 -5172)">
+    <rect id="Rectangle_136" data-name="Rectangle 136" width="202" height="202" rx="47" transform="translate(4743 5172)" fill="url(#linear-gradient)"/>
+    <g id="dollar" transform="translate(4785 5214)">
+      <g id="Group_442" data-name="Group 442">
+        <g id="Group_441" data-name="Group 441">
+          <path id="Path_635" data-name="Path 635" d="M59,0a59,59,0,1,0,59,59A59.069,59.069,0,0,0,59,0Zm0,110.625A51.625,51.625,0,1,1,110.625,59,51.682,51.682,0,0,1,59,110.625Z" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_444" data-name="Group 444" transform="translate(40.563 25.813)">
+        <g id="Group_443" data-name="Group 443">
+          <path id="Path_636" data-name="Path 636" d="M194.438,141.5c-6,0-11.062-3.378-11.062-7.375s5.067-7.375,11.063-7.375a13.086,13.086,0,0,1,8.614,2.906,3.688,3.688,0,1,0,4.9-5.516,19.519,19.519,0,0,0-9.824-4.455v-4a3.687,3.687,0,0,0-7.375,0v3.982C182.343,121.042,176,127,176,134.125c0,8.135,8.275,14.75,18.438,14.75,6,0,11.063,3.378,11.063,7.375s-5.067,7.375-11.062,7.375a13.086,13.086,0,0,1-8.614-2.906,3.688,3.688,0,1,0-4.9,5.517,19.528,19.528,0,0,0,9.823,4.462v3.99a3.688,3.688,0,0,0,7.375,0v-3.982c8.408-1.372,14.75-7.331,14.75-14.455C212.875,148.115,204.6,141.5,194.438,141.5Z" transform="translate(-176 -112)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

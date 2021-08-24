@@ -26,6 +26,8 @@ const Stake = ({userTokens}) => {
     const [approveButtonDisabled, setApproveButtonDisabled] = useState(false);
     const [stakeButtonDisabled, setStakeButtonDisabled] = useState(false);
     const [showApproveButton, setShowApproveButton] = useState(true);
+    const [disableMainnet, setDisableMainnet] = useState(false);
+    const [disabledPopup, setDisabledPopup] = useState(false);
 
     const interestRate = [
         6.4,
@@ -95,6 +97,13 @@ const Stake = ({userTokens}) => {
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
 
+            // TODO. Remove when testing is done
+            if (stakeFarmAddress === "") {
+                setDisableMainnet(true);
+            } else {
+                setDisableMainnet(false);
+            }
+
             if (homeCoinAddress !== "" && stakeFarmAddress !== "") {
                 const numAllowed = await homeCoin.methods
                     .allowance(window.ethereum.selectedAddress, stakeFarmAddress)
@@ -106,7 +115,7 @@ const Stake = ({userTokens}) => {
         }
 
         getTokenAllowance();
-    }, [tokensAllowance,userTokensStaked, chainId]);
+    }, [tokensAllowance, userTokensStaked, chainId]);
 
     const approveStakeTokens = async () => {
         try {
@@ -194,7 +203,7 @@ const Stake = ({userTokens}) => {
                                         APPROVE
                                     </button>
                                 ):
-                                <button disabled={isDisabledStake() || stakeButtonDisabled} onClick={() => setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
+                                <button onClick={() => disableMainnet ? setDisabledPopup(true) : setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
                                     { showStakeSpinner ? (<Spinner animation="border" size="sm" className="mr-2" />) : "" }
                                     STAKE
                                 </button>}
@@ -204,6 +213,7 @@ const Stake = ({userTokens}) => {
                 </div>
             </div>
             ) : "" }
+            <div>
             <Modal show={showModal}>
                 <Modal.Header closeButton onClick={() => setShowModal(false)}>
                     <Modal.Title>Stake Farm</Modal.Title>
@@ -217,6 +227,18 @@ const Stake = ({userTokens}) => {
                     <Button variant="secondary" onClick={() => setShowModal(false)}>No</Button>
                 </Modal.Footer>
             </Modal>
+            <Modal show={disabledPopup}>
+            <Modal.Header closeButton onClick={() => setDisabledPopup(false)}>
+                <Modal.Title>Coming soon...</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Staking is almost finished with testing. Check back shortly.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={() => setDisabledPopup(false)}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+            </div>
         </div>
     );
 }

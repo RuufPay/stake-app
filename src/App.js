@@ -4,6 +4,9 @@ import useWeb3Modal from "./hooks/useWeb3Modal";
 import { BrowserRouter } from 'react-router-dom';
 import contracts from './contracts';
 import Main from './components/Main';
+import {
+  Button
+}  from 'react-bootstrap';
 
 const App = () => {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, account] = useWeb3Modal();
@@ -12,9 +15,6 @@ const App = () => {
   const [stakeFarm, setStakeFarm] = useState(false);
 
   useLayoutEffect(() => {
-    console.log('CHAINID');
-    console.log(chainId);
-
     if (contracts.addresses[chainId].stakeFarm !== "") setStakeFarm(true);
   },[chainId]);
 
