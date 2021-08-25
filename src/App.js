@@ -32,13 +32,13 @@ const App = () => {
       <BrowserRouter>
         <div id="section-preloader">
           <div class="loading-indicator">
-            <img alt="Loading" src="/stake-app/assets/images/branding/app-logo-purple-min.svg" />
+            <img alt="Loading" src="/assets/images/branding/app-logo-purple-min.svg" />
           </div>
           <p>LOADING . . .</p>
         </div>
         <nav class="navbar-1 navbar navbar-expand-lg">
           <div class="container navbar-container">
-            <a class="navbar-brand" href="/"><img src="/stake-app/HomeLogo.png" width="171px" height="64px" alt="RuufPay" /></a>
+            <a class="navbar-brand" href="/"><img src="/HomeLogo.png" width="171px" height="64px" alt="RuufPay" /></a>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
@@ -123,13 +123,13 @@ const App = () => {
                 </div>
                 <div class="right col-md-6">
                   <div class="social-links">
-                    <a href="https://twitter.com/ruufpay" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/twitter-brands.svg" width="22px" height="22px" /></a>
-                    <a href="https://www.facebook.com/ruufpay/" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/facebook-brands.svg" width="22px" height="22px" /></a>
-                    <a href="https://www.instagram.com/ruufpay/" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/instagram-brands.svg" width="22px" height="22px" /></a>
-                    <a href="https://t.me/ruufpay_app" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/telegram-brands.svg" width="22px" height="22px" /></a>
-                    <a href="https://discord.gg/3KqcXd6Agb" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/discord-brands.svg" width="22px" height="22px" /></a>
-                    <a href="https://www.reddit.com/r/RuufPay/" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/reddit-brands.svg" width="22px" height="22px" /></a>
-                    <a href="https://medium.com/@content_18770" rel="noopener noreferrer" target="_blank"><img src="/stake-app/assets/images/social/medium-brands.svg" width="22px" height="22px" /></a>
+                    <a href="https://twitter.com/ruufpay" rel="noopener noreferrer" target="_blank"><img src="/assets/images/social/twitter-brands.svg" width="22px" height="22px" /></a>
+                    <a href="https://www.facebook.com/ruufpay/" rel="noopener noreferrer" target="_blank"><img src="/assets/images/social/facebook-brands.svg" width="22px" height="22px" /></a>
+                    <a href="https://www.instagram.com/ruufpay/" rel="noopener noreferrer" target="_blank"><img src="/assets/images/social/instagram-brands.svg" width="22px" height="22px" /></a>
+                    <a href="https://t.me/ruufpay_app" rel="noopener noreferrer" target="_blank"><img src="/assets/images/social/telegram-brands.svg" width="22px" height="22px" /></a>
+                    <a href="https://discord.gg/3KqcXd6Agb" rel="noopener noreferrer" target="_blank"><img src="/assets/images/social/discord-brands.svg" width="22px" height="22px" /></a>
+                    <a href="https://www.reddit.com/r/RuufPay/" rel="noopener noreferrer" target="_blank"><img src="/assets/images/social/reddit-brands.svg" width="22px" height="22px" /></a>
+                    <a href="https://medium.com/@content_18770" rel="noopener noreferrer" target="_blank"><img src="/assets/images/social/medium-brands.svg" width="22px" height="22px" /></a>
                 </div>
               </div>
             </div>
