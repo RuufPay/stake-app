@@ -1891,6 +1891,10 @@ a.animated-button.style2:hover:after {
     color: #2da9ca;
 }
 
+#section-nocoins {
+	padding:150px 0;
+}
+
 /*============================
  * 4.13 SECTION BLOG DETAIL 1 *
  *===========================*/

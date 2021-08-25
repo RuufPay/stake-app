@@ -105,11 +105,10 @@ const Withdraw = () => {
                     <div class="row">
                         <div class="title1 col-12">
                             <h3 class="clscheme">Withdraw your tokens</h3>
-                            <h2>
-                                Home Coins staked: <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} />
-                            </h2>
                         </div>
                         <div class="form col-12 ez-animate text-center" data-animation="fadeInUp">
+                            <h3>Home Coins staked: <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /></h3>
+                            <p></p>
                             <p>Stake date: {stakeDate}</p>
                             <p></p>
                             <p></p>
