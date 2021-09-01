@@ -10,22 +10,14 @@ import {
 
 const App = () => {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, account] = useWeb3Modal();
-  const [homeCoinAddress, setHomeCoinAddress] = useState(null);
-  const [etherscanUrl, setEtherscanUrl] = useState();
   const [stakeFarm, setStakeFarm] = useState(false);
 
   useLayoutEffect(() => {
-    if (contracts.addresses[chainId].stakeFarm !== "") setStakeFarm(true);
+    if (contracts.addresses[chainId].stakeFarm !== "")
+      setStakeFarm(true);
+    else
+      setStakeFarm(false);
   },[chainId]);
-
-  const loadHomeCoinAddress = () => {
-    setHomeCoinAddress(contracts.addresses[chainId].homeCoin);
-  }
-    
-  const etherscanTokenUrl = () => {
-    if (chainId === '0x1') setEtherscanUrl(`https://etherscan.io/token/${contracts.addresses[chainId].homeCoin}`);
-    else if (chainId === '0x4') setEtherscanUrl(`https://rinkeby.etherscan.io/token/${contracts.addresses[chainId].homeCoin}`);
-  }
 
   return (
     <>
@@ -68,24 +60,6 @@ const App = () => {
 			      </svg>
 		      </div>
         </div>
-        {/*
-        <div id="section-subheader1">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                  {window.ethereum?.selectedAddress ? (
-                  <ul>
-                    <li><strong>NETWORK: {contracts.chainsNetworkName[chainId]}</strong></li>
-                    <li>&nbsp;-&nbsp;</li>
-                    <li class="current"><strong>HOME Coin: <a href={etherscanUrl} rel="noopener noreferrer" target="_blank">{homeCoinAddress}</a></strong></li>
-                  </ul>
-                  ): ""}
-              </div>
-            </div>
-          </div>
-        </div>
-        */}
-
         { chainId === 0 ? 
           <div id="section-blogdetail1">
             <div class="container">
@@ -95,7 +69,7 @@ const App = () => {
             </div>
           </div>
         :
-        /*[
+        [
           stakeFarm === false ? 
             <div id="section-blogdetail1">
               <div class="container">
@@ -105,8 +79,7 @@ const App = () => {
               </div>
             </div>
           : <Main></Main>
-        ]*/
-        <Main></Main>
+        ]
         }
         <div id="section-footer">
           <div class="custom-shape-divider-top-1628808112">
