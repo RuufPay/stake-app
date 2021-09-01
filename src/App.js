@@ -64,7 +64,7 @@ const App = () => {
           <div id="section-blogdetail1">
             <div class="container">
               <div class="title1 mt-5">
-                <h3>Earn staking rewards. Connect a wallet.</h3>
+                <h3>Earn up to 18.7% in staking rewards. Connect a wallet.</h3>
               </div>
             </div>
           </div>

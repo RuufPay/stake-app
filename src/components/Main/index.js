@@ -68,7 +68,7 @@ const Main = () => {
                             </div>
                         ) : 
                             <div>
-                                <h3>Earn staking rewards. Connect a wallet.</h3>
+                                <h3>Earn up to 18.7% in staking rewards. Connect a wallet.</h3>
                             </div>
                         }
                     </div>
