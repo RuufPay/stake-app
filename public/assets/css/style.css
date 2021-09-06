@@ -3267,6 +3267,26 @@ body.scheme4 #section-footer {
 	transition: all 0.2s ease-in-out;
 }
 
-
+#timer {  
+	font-size: 3em;
+	font-weight: 100;
+	color: #343434;
+	text-align: center;
+	padding:150px 0;
+}
+	
+#timer div {
+	  display: inline-block;
+	  min-width: 90px;
+	  padding-top: 30px;
+}
+	  
+#timer span {
+		color: #343434;
+		display: block;
+		font-size: .35em;
+		font-weight: 400;
+}
+  
 
 

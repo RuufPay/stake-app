@@ -1,16 +1,39 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useEffect, useState } from "react";
 import { WalletButton } from './WalletButton';
 import useWeb3Modal from "./hooks/useWeb3Modal";
 import { BrowserRouter } from 'react-router-dom';
 import contracts from './contracts';
 import Main from './components/Main';
-import {
-  Button
-}  from 'react-bootstrap';
 
 const App = () => {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, account] = useWeb3Modal();
   const [stakeFarm, setStakeFarm] = useState(false);
+  
+  const calculateTimeLeft = () => {
+    const difference = +new Date(`2021-09-30 17:00:00`) - +new Date();
+    let timeLeft = "";
+
+    if (difference > 0) {
+      timeLeft = 
+      '<div id="timer">' +
+          '<h3>Earn up to 18.32% in staking rewards. Coming soon!</h3>' +
+          "<div>" + Math.floor(difference / (1000 * 60 * 60 * 24)) + "<span>days</span></div>" + 
+          "<div>" + Math.floor((difference / (1000 * 60 * 60)) % 24) + "<span>hours</span></div>" +
+          "<div>" + Math.floor((difference / 1000 / 60) % 60) + "<span>minutes</span></div>" +
+          "<div>" + Math.floor((difference / 1000) % 60) + "<span>seconds</span></div>" +
+      "</div>";
+    }
+
+    return timeLeft;
+  };
+  
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+  });
 
   useLayoutEffect(() => {
     if (contracts.addresses[chainId].stakeFarm !== "")
@@ -38,10 +61,12 @@ const App = () => {
                   </li>
                 </ul>
               </div>
+              { timeLeft.length ? "" :
               <WalletButton
                 provider={provider}
                 loadWeb3Modal={loadWeb3Modal}
                 logoutOfWeb3Modal={logoutOfWeb3Modal}/>
+              }
           </div>
         </nav>
         <div id="section-slider1">
@@ -60,11 +85,17 @@ const App = () => {
 			      </svg>
 		      </div>
         </div>
-        { chainId === 0 ? 
+
+        { timeLeft.length ?
+          <div className="content" dangerouslySetInnerHTML={{__html: timeLeft}}></div>
+
+         : 
+        [
+          chainId === 0 ? 
           <div id="section-blogdetail1">
             <div class="container">
               <div class="title1 mt-5">
-                <h3>Earn up to 18.7% in staking rewards. Connect a wallet.</h3>
+                <h3>Earn up to 18.32% in staking rewards. Connect a wallet.</h3>
               </div>
             </div>
           </div>
@@ -80,7 +111,7 @@ const App = () => {
             </div>
           : <Main></Main>
         ]
-        }
+        ]}
         <div id="section-footer">
           <div class="custom-shape-divider-top-1628808112">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
