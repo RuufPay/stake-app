@@ -4,7 +4,7 @@ import useWeb3Modal from "./hooks/useWeb3Modal";
 import { BrowserRouter } from 'react-router-dom';
 import contracts from './contracts';
 import Main from './components/Main';
-
+//
 const App = () => {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, account] = useWeb3Modal();
   const [stakeFarm, setStakeFarm] = useState(false);
