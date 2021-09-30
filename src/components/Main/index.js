@@ -60,7 +60,10 @@ const Main = () => {
                                     { (showWalletMessage()) ? (
                                         <div id="section-nocoins">
                                             <h3>You don't have any Home Coins in your wallet</h3>
+                                            <p></p>
                                             <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank">Buy HOME on Uniswap</a></p>
+                                            <p>or</p>
+                                            <p><a href="https://coinsbit.io/trade/HOME_USDT" rel="noopener noreferrer" target="_blank">Buy HOME on Coinsbit</a></p>
                                         </div>
                                     ) : "" }
                                 </div>

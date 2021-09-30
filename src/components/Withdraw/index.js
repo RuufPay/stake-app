@@ -118,7 +118,7 @@ const Withdraw = () => {
                                 <NumberFormat displayType={'text'} value={userTokenRewards} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens as intereset rate.
                             </p>
                             <p></p>
-                            <button disabled={withdrawalButtonDisabled} onClick={() => setShowModal(true)} class="shadow1 style3 bgscheme mx-3 my-3 px-5">
+                            <button disabled={withdrawalButtonDisabled} onClick={() => setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
                                 { showSpinner ? (<Spinner animation="border" size="sm" class="mr-2" />) : "" }
                                 WITHDRAW
                             </button>

@@ -53,20 +53,24 @@ const App = () => {
         </div>
         <nav class="navbar-1 navbar navbar-expand-lg">
           <div class="container navbar-container">
-            <a class="navbar-brand" href="/"><img src="/HomeLogo.png" width="171px" height="64px" alt="RuufPay" /></a>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <p style={{color:"white"}} class="center">{!window.ethereum?.selectedAddress ? "" : "Connected account: " + window.ethereum?.selectedAddress}</p>
-                  </li>
-                </ul>
-              </div>
-              { timeLeft.length ? "" :
-              <WalletButton
-                provider={provider}
-                loadWeb3Modal={loadWeb3Modal}
-                logoutOfWeb3Modal={logoutOfWeb3Modal}/>
-              }
+            <a class="navbar-brand" href="/">
+              <img class="app-logo" src="/HomeLogo.png" width="170px" height="64px" alt="RuufPay" />
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <p class="nav-link scroll-down"></p>
+                </li>
+              </ul>
+            </div>
+            <a href="https://ruufpay.app/tutorial-staking.html" target="_blank" rel="noopener noreferrer" class="btn-1 shadow1 style3 bgscheme">Tutorial</a>
+
+            { timeLeft.length ? "" :
+            <WalletButton
+              provider={provider}
+              loadWeb3Modal={loadWeb3Modal}
+              logoutOfWeb3Modal={logoutOfWeb3Modal}/>
+            }
           </div>
         </nav>
         <div id="section-slider1">
@@ -88,7 +92,6 @@ const App = () => {
 
         { timeLeft.length ?
           <div className="content" dangerouslySetInnerHTML={{__html: timeLeft}}></div>
-
          : 
         [
           chainId === 0 ? 

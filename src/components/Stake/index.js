@@ -203,7 +203,7 @@ const Stake = ({userTokens}) => {
                                         APPROVE
                                     </button>
                                 ):
-                                <button onClick={() => disableMainnet ? setDisabledPopup(true) : setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
+                                <button disabled={stakeButtonDisabled} onClick={() => disableMainnet ? setDisabledPopup(true) : setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
                                     { showStakeSpinner ? (<Spinner animation="border" size="sm" className="mr-2" />) : "" }
                                     STAKE
                                 </button>}
