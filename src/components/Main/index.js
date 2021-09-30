@@ -70,7 +70,7 @@ const Main = () => {
                             )}
                             </div>
                         ) : 
-                            <div>
+                            <div class="container">
                                 <h3>Earn up to 18.32% in staking rewards. Connect a wallet.</h3>
                             </div>
                         }

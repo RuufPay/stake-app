@@ -15,7 +15,7 @@ const App = () => {
 
     if (difference > 0) {
       timeLeft = 
-      '<div id="timer">' +
+      '<div class="container" id="timer">' +
           '<h3>Earn up to 18.32% in staking rewards. Coming soon!</h3>' +
           "<div>" + Math.floor(difference / (1000 * 60 * 60 * 24)) + "<span>days</span></div>" + 
           "<div>" + Math.floor((difference / (1000 * 60 * 60)) % 24) + "<span>hours</span></div>" +
