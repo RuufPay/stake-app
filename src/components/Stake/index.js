@@ -133,6 +133,8 @@ const Stake = ({userTokens}) => {
 
             setTokensAllowance(max_tokens);
             console.log(tx);
+        } catch(e) {
+            console.log(e);
         }
         finally {
             setShowApproveSpinner(false);
@@ -154,6 +156,8 @@ const Stake = ({userTokens}) => {
                 .send({ from: window.ethereum.selectedAddress });
 
             console.log(tx);
+        } catch(e) {
+            console.log(e);
         }
         finally {
             setShowStakeSpinner(false);

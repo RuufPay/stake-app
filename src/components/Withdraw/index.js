@@ -115,7 +115,7 @@ const Withdraw = () => {
                             <p>Staked for {diffStakeDate}</p>
                             <p></p>
                             <p>
-                                <NumberFormat displayType={'text'} value={userTokenRewards} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens as intereset rate.
+                                <NumberFormat displayType={'text'} value={userTokenRewards} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens as staking rewards.
                             </p>
                             <p></p>
                             <button disabled={withdrawalButtonDisabled} onClick={() => setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
