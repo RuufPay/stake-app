@@ -6,12 +6,12 @@ export default {
     stakeFarm: ""
   },
   [chainsTypeId.ETH]: {
-    homeCoin: "0xAF585c15daB8C363087c572758AC75E82C467579",
-    stakeFarm: "0x75a401D888A2b827BAEEC26dc3C60e064288A6C2"
-  },
-  [chainsTypeId.POLYGON]: {
     homeCoin: "",
     stakeFarm: ""
+  },
+  [chainsTypeId.POLYGON]: {
+    homeCoin: "0x182f1d39df9460d7aef29afbc80bbd68ed0a41d5",
+    stakeFarm: "0x4660dcdbdcf4b5cbae20670364c888d63ad49e62"
   },
   [chainsTypeId.XDAI]: {
     homeCoin: "",
@@ -22,8 +22,8 @@ export default {
     stakeFarm: ""
   },
   [chainsTypeId.RINKEBY]: {
-    homeCoin: "0x3460fcA73f770932eA9FF80c2D3AfA2A6ab4a18e",
-    stakeFarm: "0x425D8F1349fdce8D83714E09352105e2feDf1b7C"
+    homeCoin: "",
+    stakeFarm: ""
   },
   [chainsTypeId.ROPSTEN]: {
     homeCoin: "",

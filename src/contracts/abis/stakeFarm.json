@@ -24,28 +24,34 @@
           "internalType": "uint256",
           "name": "_amount",
           "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_date",
+          "type": "uint256"
         }
       ],
-      "name": "EmegercyWithdraw",
+      "name": "HomeTokenStaked",
       "type": "event"
     },
     {
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "address",
-          "name": "_user",
+          "name": "previousOwner",
           "type": "address"
         },
         {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "name": "HomeTokenStaked",
+      "name": "OwnershipTransferred",
       "type": "event"
     },
     {
@@ -72,6 +78,47 @@
       ],
       "name": "Withdraw",
       "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_users",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_amounts",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint64[]",
+          "name": "_dates",
+          "type": "uint64[]"
+        }
+      ],
+      "name": "migrateInitialStake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_extraRewards",
+          "type": "uint16"
+        }
+      ],
+      "name": "addStakeExtraType",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "inputs": [
@@ -107,13 +154,6 @@
         }
       ],
       "name": "withdraw",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "emergencyWithdraw",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

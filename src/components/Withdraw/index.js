@@ -107,7 +107,7 @@ const Withdraw = () => {
                             <h3 class="clscheme">Withdraw your tokens</h3>
                         </div>
                         <div class="form col-12 ez-animate text-center" data-animation="fadeInUp">
-                            <h3>Home Coins staked: <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /></h3>
+                            <h3>Ruuf Coins staked: <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /></h3>
                             <p></p>
                             <p>Stake date: {stakeDate}</p>
                             <p></p>
@@ -132,7 +132,7 @@ const Withdraw = () => {
                     <Modal.Title>Withdraw tokens</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>You are going to withdraw <NumberFormat displayType={'text'} value={totalTokensWithdraw()} thousandSeparator={true} decimalSeparator={"."} decimalScale={2}/> Home Coins</p>
+                    <p>You are going to withdraw <NumberFormat displayType={'text'} value={totalTokensWithdraw()} thousandSeparator={true} decimalSeparator={"."} decimalScale={2}/> Ruuf Coins</p>
                     <p>Are you sure?</p>
                 </Modal.Body>
                 <Modal.Footer>

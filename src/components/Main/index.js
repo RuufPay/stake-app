@@ -54,16 +54,16 @@ const Main = () => {
                         { window.ethereum?.selectedAddress ? (
                             <div>
                             { userTokens > 0 ? (
-                                <h3>You have <NumberFormat displayType={'text'} value={userTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> Home Coins in your wallet</h3>
+                                <h3>You have <NumberFormat displayType={'text'} value={userTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> Ruuf Coins in your wallet</h3>
                             ) : (
                                 <div>
                                     { (showWalletMessage()) ? (
                                         <div id="section-nocoins">
-                                            <h3>You don't have any Home Coins in your wallet</h3>
+                                            <h3>You don't have any Ruuf Coins in your wallet</h3>
                                             <p></p>
-                                            <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank">Buy HOME on Uniswap</a></p>
+                                            <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank">Buy RUUF on Sushiswap</a></p>
                                             <p>or</p>
-                                            <p><a href="https://coinsbit.io/trade/HOME_USDT" rel="noopener noreferrer" target="_blank">Buy HOME on Coinsbit</a></p>
+                                            <p><a href="https://coinsbit.io/trade/HOME_USDT" rel="noopener noreferrer" target="_blank">Buy RUUF on Coinsbit</a></p>
                                         </div>
                                     ) : "" }
                                 </div>

@@ -1,6 +1,10 @@
 import React, { useLayoutEffect, useEffect, useState } from "react";
 import { WalletButton } from './WalletButton';
+import {
+  Button
+}  from 'react-bootstrap';
 import useWeb3Modal from "./hooks/useWeb3Modal";
+import { switchFromChain } from "./hooks/metamask";
 import { BrowserRouter } from 'react-router-dom';
 import contracts from './contracts';
 import Main from './components/Main';
@@ -108,7 +112,13 @@ const App = () => {
             <div id="section-blogdetail1">
               <div class="container">
                 <div class="title1 mt-5">
-                  <h3>Unsupported network. Be sure you are in Ethereum mainnet.</h3>
+                  <h2>Unsupported network.</h2>
+                  <p></p> 
+                  <h3>We've moved from Ethereum to Polygon network</h3>
+                  <p></p>
+                  <h5>Switch to Polygon network in Metamask</h5>
+                  <p></p>
+                  <a href="#" class="btn-1 shadow1 style3 bgscheme" onClick={() => switchFromChain(137)}>Switch network</a>
                 </div>
               </div>
             </div>

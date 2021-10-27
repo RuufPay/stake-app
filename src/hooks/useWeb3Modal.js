@@ -89,15 +89,15 @@ function useWeb3Modal(config = {}) {
       loadWeb3Modal();
       setAutoLoaded(true);
     }
-  }, [
-    autoLoad,
-    autoLoaded,
-    loadWeb3Modal,
-    setAutoLoaded,
-    web3Modal.cachedProvider,
-  ]);
+    }, [
+      autoLoad,
+      autoLoaded,
+      loadWeb3Modal,
+      setAutoLoaded,
+      web3Modal.cachedProvider,
+    ]);
 
-  return [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, account];
-}
+    return [provider, loadWeb3Modal, logoutOfWeb3Modal, chainId, account];
+  }
 
 export default useWeb3Modal;
