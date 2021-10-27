@@ -61,7 +61,7 @@ const Main = () => {
                                         <div id="section-nocoins">
                                             <h3>You don't have any Ruuf Coins in your wallet</h3>
                                             <p></p>
-                                            <p><a href="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xAF585c15daB8C363087c572758AC75E82C467579&use=V2" rel="noopener noreferrer" target="_blank">Buy RUUF on Sushiswap</a></p>
+                                            <p><a href="https://app.sushi.com/swap?outputCurrency=0x182f1d39df9460d7aef29afbc80bbd68ed0a41d5" rel="noopener noreferrer" target="_blank">Buy RUUF on Sushiswap</a></p>
                                             <p>or</p>
                                             <p><a href="https://coinsbit.io/trade/HOME_USDT" rel="noopener noreferrer" target="_blank">Buy RUUF on Coinsbit</a></p>
                                         </div>
