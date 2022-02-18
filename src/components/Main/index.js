@@ -78,16 +78,9 @@ const Main = () => {
                 </div>
             </div>
             { stakedTokens === 0 ? (
-                <div>
-                    <Stake userTokens={userTokens}/>
-                    <p></p>
-                    <Withdraw />
-                </div>
+                <Stake userTokens={userTokens}/>
             ) : (
-                <div>
-                    <Withdraw />
-                    <Stake userTokens={userTokens}/>
-                </div>
+                <Withdraw />
             ) }
         </div>
     );

@@ -76,49 +76,101 @@
           "type": "uint256"
         }
       ],
-      "name": "Withdraw",
+      "name": "WithdrawWithRewards",
       "type": "event"
     },
     {
+      "anonymous": false,
       "inputs": [
         {
-          "internalType": "address[]",
-          "name": "_users",
-          "type": "address[]"
-        },
-        {
-          "internalType": "uint256[]",
-          "name": "_amounts",
-          "type": "uint256[]"
-        },
-        {
-          "internalType": "uint64[]",
-          "name": "_dates",
-          "type": "uint64[]"
-        }
-      ],
-      "name": "migrateInitialStake",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
+          "indexed": false,
           "internalType": "address",
           "name": "_user",
           "type": "address"
         },
         {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_homeAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "WithdrawWithoutRewards",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "ir",
+      "outputs": [
+        {
           "internalType": "uint16",
-          "name": "_extraRewards",
+          "name": "",
           "type": "uint16"
         }
       ],
-      "name": "addStakeExtraType",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "maxStakes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "totalTokensStaked",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -131,9 +183,50 @@
           "internalType": "uint256",
           "name": "_amount",
           "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_months",
+          "type": "uint16"
         }
       ],
       "name": "stake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_ir",
+          "type": "uint16"
+        }
+      ],
+      "name": "changeIr",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_maxStake",
+          "type": "uint16"
+        }
+      ],
+      "name": "changeMaxStakes",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -188,18 +281,33 @@
         },
         {
           "internalType": "uint256",
-          "name": "pendingRewards",
+          "name": "stakeDate",
           "type": "uint256"
         },
         {
           "internalType": "uint256",
-          "name": "stakeDate",
+          "name": "pendingRewards",
           "type": "uint256"
         },
         {
           "internalType": "uint256",
           "name": "multiplier",
           "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "months",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint256",
+          "name": "untilRewards",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "finalIr",
+          "type": "uint16"
         }
       ],
       "stateMutability": "view",

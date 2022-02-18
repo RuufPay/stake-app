@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import contracts from "../../contracts";
 import {
     Button,
@@ -16,14 +16,17 @@ const Withdraw = () => {
     const [userTokensStaked, setUserTokensStaked] = useState(0);
     const [userTokenRewards, setUserTokenRewards] = useState(0);
     const [stakeDate, setStakeDate] = useState(0);
+    const [finalStakeDate, setFinalStakeDate] = useState(0);
     const [diffStakeDate, setDiffStakeDate] = useState('');
-    const [months, setMonths] = useState(1);
     const [ir, setIr] = useState(0);
+    const [irFinal, setIrFinal] = useState(0);
+    const [finalTokens, setFinalTokens] = useState(0);
+    const [months, setMonths] = useState(0);
     const [showSpinner, setShowSpinner] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [withdrawalButtonDisabled, setWithdrawalButtonDisabled] = useState(true);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const getTokensStakedInFarm = async () => {
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
@@ -33,11 +36,18 @@ const Withdraw = () => {
                     .getUserData(window.ethereum.selectedAddress)
                     .call({ from: window.ethereum.selectedAddress });
 
-                setUserTokensStaked(web3.utils.fromWei(userData.homeTokens.toString(),'ether'));
+                console.log(userData);
+
+                const tokens = web3.utils.fromWei(userData.homeTokens.toString(),'ether');
+                setUserTokensStaked(tokens);
                 setUserTokenRewards(web3.utils.fromWei(userData.pendingRewards.toString(),'ether'));
                 setStakeDate(new Date(userData.stakeDate * 1e3).toUTCString());
                 setDiffStakeDate(timeDiffCalc(Date.now(), new Date(userData.stakeDate * 1e3)));
                 setIr(userData.multiplier);
+                setIrFinal(userData.finalIr);
+                setMonths(userData.months);
+                setFinalStakeDate(secsToTime(userData.untilRewards));
+                setFinalTokens(tokens * userData.finalIr / 10000);
                 setWithdrawalButtonDisabled(false);
             }
         }
@@ -93,8 +103,35 @@ const Withdraw = () => {
         return difference;
     }
 
+    const secsToTime = (myDate) => {
+   
+        // calculate days
+        const days = Math.floor(myDate / 86400);
+        myDate -= days * 86400;
+    
+        // calculate hours
+        const hours = Math.floor(myDate / 3600) % 24;
+        myDate -= hours * 3600;
+    
+        // calculate minutes
+        const minutes = Math.floor(myDate / 60) % 60;
+        myDate -= minutes * 60;
+    
+        let difference = '';
+        if (days > 0) {
+          difference += (days === 1) ? `${days} day, ` : `${days} days, `;
+        }
+    
+        difference += (hours === 0 || hours === 1) ? `${hours} hour, ` : `${hours} hours, `;
+    
+        difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes`; 
+    
+        return difference;
+    }
+
     const totalTokensWithdraw = () => {
-        return Number(userTokensStaked) + Number(userTokenRewards);
+        if (ir == 0) return Number(userTokensStaked);
+        else return Number(userTokensStaked) + Number(userTokenRewards);
     }
 
     return (
@@ -107,7 +144,7 @@ const Withdraw = () => {
                             <h3 class="clscheme">Withdraw your tokens</h3>
                         </div>
                         <div class="form col-12 ez-animate text-center" data-animation="fadeInUp">
-                            <h3>Ruuf Coins staked: <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /></h3>
+                            <h3>You've staked <NumberFormat displayType={'text'} value={userTokensStaked} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> Ruuf Coins for {months} months.</h3>
                             <p></p>
                             <p>Stake date: {stakeDate}</p>
                             <p></p>
@@ -115,9 +152,8 @@ const Withdraw = () => {
                             <p>Staked for {diffStakeDate}</p>
                             <p></p>
                             <p>
-                                <NumberFormat displayType={'text'} value={userTokenRewards} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens as staking rewards.
+                                You could claim <NumberFormat displayType={'text'} value={finalTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens as staking rewards in {finalStakeDate}
                             </p>
-                            <p></p>
                             <button disabled={withdrawalButtonDisabled} onClick={() => setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
                                 { showSpinner ? (<Spinner animation="border" size="sm" class="mr-2" />) : "" }
                                 WITHDRAW
