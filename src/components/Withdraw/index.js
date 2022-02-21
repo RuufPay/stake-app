@@ -20,6 +20,7 @@ const Withdraw = () => {
     const [diffStakeDate, setDiffStakeDate] = useState('');
     const [ir, setIr] = useState(0);
     const [irFinal, setIrFinal] = useState(0);
+    const [isFinished, setIsFinished] = useState(false);
     const [finalTokens, setFinalTokens] = useState(0);
     const [months, setMonths] = useState(0);
     const [showSpinner, setShowSpinner] = useState(false);
@@ -46,7 +47,12 @@ const Withdraw = () => {
                 setIr(userData.multiplier);
                 setIrFinal(userData.finalIr);
                 setMonths(userData.months);
-                setFinalStakeDate(secsToTime(userData.untilRewards));
+                if (userData.untilRewards >= 0) {
+                    setFinalStakeDate(secsToTime(userData.untilRewards));
+                    setIsFinished(false);
+                } else {
+                    setIsFinished(true);
+                }
                 setFinalTokens(tokens * userData.finalIr / 10000);
                 setWithdrawalButtonDisabled(false);
             }
@@ -151,9 +157,15 @@ const Withdraw = () => {
                             <p></p>
                             <p>Staked for {diffStakeDate}</p>
                             <p></p>
+                            { isFinished === false ? (
                             <p>
                                 You could claim <NumberFormat displayType={'text'} value={finalTokens} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} /> tokens as staking rewards in {finalStakeDate}
                             </p>
+                            ): (
+                            <p>
+                                <b>Staking finished. Please, withdraw your staking rewards.</b>
+                            </p>
+                            )}
                             <button disabled={withdrawalButtonDisabled} onClick={() => setShowModal(true)} class="shadow1 style3 bgscheme mt-5">
                                 { showSpinner ? (<Spinner animation="border" size="sm" class="mr-2" />) : "" }
                                 WITHDRAW
@@ -168,8 +180,16 @@ const Withdraw = () => {
                     <Modal.Title>Withdraw tokens</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>You are going to withdraw <NumberFormat displayType={'text'} value={totalTokensWithdraw()} thousandSeparator={true} decimalSeparator={"."} decimalScale={2}/> Ruuf Coins</p>
-                    <p>Are you sure?</p>
+                    { isFinished === false ? (
+                    <div>
+                        <p>Warning!</p>
+                        <p>You are withdrawing before the staking period has ended. You will lose all your rewards and only withdraw <NumberFormat displayType={'text'} value={totalTokensWithdraw()} thousandSeparator={true} decimalSeparator={"."} decimalScale={2}/> Ruuf Coins </p>
+                        <p>Are you sure?</p>
+                    </div>) : (
+                    <div>
+                        <p>You are going to withdraw <NumberFormat displayType={'text'} value={totalTokensWithdraw()} thousandSeparator={true} decimalSeparator={"."} decimalScale={2}/> Ruuf Coins</p>
+                        <p>Are you sure?</p>
+                    </div>)}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={() => withdrawTokens()}>Yes</Button>

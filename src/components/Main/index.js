@@ -20,7 +20,8 @@ const Main = () => {
                 let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
                 const tokens = await token.methods
                     .balanceOf(window.ethereum.selectedAddress)
-                    .call({ from: window.ethereum.selectedAddress });                          
+                    .call({ from: window.ethereum.selectedAddress });   
+                    
                 setUserTokens(web3.utils.fromWei(tokens,'ether'));
             }
 
@@ -29,7 +30,8 @@ const Main = () => {
                 let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
                 const data = await stakeFarm.methods
                     .getUserData(window.ethereum.selectedAddress)
-                    .call({ from: window.ethereum.selectedAddress });                          
+                    .call({ from: window.ethereum.selectedAddress });
+                    
                 setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
             } else {
                 setStakedTokens(0);
@@ -77,7 +79,7 @@ const Main = () => {
                     </div>
                 </div>
             </div>
-            { stakedTokens === 0 ? (
+            { Number(stakedTokens) === 0 ? (
                 <Stake userTokens={userTokens}/>
             ) : (
                 <Withdraw />
