@@ -17,29 +17,34 @@ const Main = () => {
         const loadTokensFromAccount = async (chainId) => {
             const homeCoinAddress = contracts.addresses[chainId].homeCoin;
             if (homeCoinAddress !== "") {
-                let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
-                const tokens = await token.methods
-                    .balanceOf(window.ethereum.selectedAddress)
-                    .call({ from: window.ethereum.selectedAddress });   
-                    
-                console.log('Tokens:', tokens);
-                setUserTokens(web3.utils.fromWei(tokens,'ether'));
+                try {
+                    console.log(window.ethereum.selectedAddress);
+                    console.log('address', homeCoinAddress);
+                    let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
+                    console.log('Token', token);
+                    const tokens = await token.methods
+                        .balanceOf(window.ethereum.selectedAddress)
+                        .call({ from: window.ethereum.selectedAddress });   
+                        
+                    console.log('Tokens:', tokens);
+                    setUserTokens(web3.utils.fromWei(tokens,'ether'));
+                } catch(e) {
+                    console.log('LoadToken:', e);
+                }
             }
 
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             if (stakeFarmAddress !== "") {
-                console.log(stakeFarmAddress);
-                console.log(contracts.stakeFarm);
-                console.log(window.ethereum.selectedAddress);
-                let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
-                const data = await stakeFarm.methods
-                    .getUserData(window.ethereum.selectedAddress)
-                    .call({ from: window.ethereum.selectedAddress });
-                    
-                console.log('StakedTokens:', data);
-                setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
-            } else {
-                setStakedTokens(0);
+                try {
+                    let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
+                    const data = await stakeFarm.methods
+                        .getUserData(window.ethereum.selectedAddress)
+                        .call({ from: window.ethereum.selectedAddress });
+                        
+                    setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
+                } catch(e) {
+                    console.log('GetUserData:', e);
+                }
             }
         }
           
@@ -49,8 +54,7 @@ const Main = () => {
     const showWalletMessage = (() => {
         const uTokens = userTokens === null ? 0 : userTokens;
         const sTokens = stakedTokens === null ? 0 : stakedTokens;
-        console.log('userTokens', uTokens);
-        console.log('stakedTokens', sTokens);
+
         if ((uTokens == 0) && (sTokens == 0)) return true;
         
         return false;

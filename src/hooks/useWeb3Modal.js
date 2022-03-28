@@ -70,8 +70,7 @@ function useWeb3Modal(config = {}) {
 
     provider.on("accountsChanged", async (accounts) => {
       console.log("METAMASK accountsChanged:", accounts);
-      //setAccount(accounts[0]);
-      window.location.reload();
+      setAccount(accounts[0]);
     });
 
     provider.on("chainChanged", async (chainId) => {

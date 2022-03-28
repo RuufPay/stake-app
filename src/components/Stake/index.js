@@ -33,13 +33,6 @@ const Stake = ({userTokens}) => {
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
 
-            // TODO. Remove when testing is done
-            if (stakeFarmAddress === "") {
-                setDisableMainnet(true);
-            } else {
-                setDisableMainnet(false);
-            }
-
             if (homeCoinAddress !== "" && stakeFarmAddress !== "") {
                 const numAllowed = await homeCoin.methods
                     .allowance(window.ethereum.selectedAddress, stakeFarmAddress)
@@ -47,6 +40,7 @@ const Stake = ({userTokens}) => {
 
                 setTokensAllowance(numAllowed);
                 checkApproveButton();
+                changeHomeCoinsAmount(0);
             }
         }
 
