@@ -33,7 +33,7 @@ const App = () => {
   
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
@@ -109,7 +109,7 @@ const App = () => {
         :
         [
           stakeFarm === false ? 
-            <div id="section-blogdetail1">
+            <div id="section-blogdetail2">
               <div class="container">
                 <div class="title1 mt-5">
                   <h2>Unsupported network.</h2>
@@ -118,7 +118,7 @@ const App = () => {
                   <p></p>
                   <h5>Switch to Polygon network in Metamask</h5>
                   <p></p>
-                  <a href="#" class="btn-1 shadow1 style3 bgscheme" onClick={() => switchFromChain(137)}>Switch network</a>
+                  <a href="/" class="btn-1 shadow1 style3 bgscheme" onClick={() => switchFromChain(137)}>Switch network</a>
                 </div>
               </div>
             </div>

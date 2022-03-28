@@ -37,8 +37,6 @@ const Withdraw = () => {
                     .getUserData(window.ethereum.selectedAddress)
                     .call({ from: window.ethereum.selectedAddress });
 
-                console.log(userData);
-
                 const tokens = web3.utils.fromWei(userData.homeTokens.toString(),'ether');
                 setUserTokensStaked(tokens);
                 setUserTokenRewards(web3.utils.fromWei(userData.pendingRewards.toString(),'ether'));
@@ -70,7 +68,7 @@ const Withdraw = () => {
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             const stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
             const tx = await stakeFarm.methods
-                .withdraw()
+                .withdraw(window.ethereum.selectedAddress)
                 .send({ from: window.ethereum.selectedAddress });
 
             console.log(tx);

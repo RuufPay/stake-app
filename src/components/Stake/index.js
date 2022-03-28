@@ -53,15 +53,23 @@ const Stake = ({userTokens}) => {
         getTokenAllowance();
     }, [tokensAllowance, chainId]);
 
+    const checkApproveButton = () => {
+        if (userTokensStaked > 0) {
+            setShowApproveButton(BigInt(tokensAllowance) < BigInt(web3.utils.toWei(userTokensStaked.toString())));
+        } else {
+            setShowApproveButton(false);
+        }
+    }
+
     const changeHomeCoinsAmount = ((amount) => {
         setUserTokensStaked(amount);
         checkApproveButton();
-        setStakeButtonDisabled(amount === 0 || months == 0);
+        setStakeButtonDisabled(amount === 0 || months === 0);
     });
 
     const changeStakeMonths = (months) => {
         setMonths(months);
-        setStakeButtonDisabled(userTokensStaked === 0 || months == 0);
+        setStakeButtonDisabled(userTokensStaked === 0 || months === 0);
     }
 
     const approveStakeTokens = async () => {
@@ -101,7 +109,7 @@ const Stake = ({userTokens}) => {
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             const stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
             const tx = await stakeFarm.methods
-                .stake(window.ethereum.selectedAddress, web3.utils.toWei(userTokensStaked.toString()), months)
+                .stake(web3.utils.toWei(userTokensStaked.toString()), months)
                 .send({ from: window.ethereum.selectedAddress });
 
             console.log(tx);
@@ -117,14 +125,6 @@ const Stake = ({userTokens}) => {
 
     const onMax = () => {
         setUserTokensStaked(userTokens);
-    }
-
-    const checkApproveButton = () => {
-        if (userTokensStaked > 0) {
-            setShowApproveButton(BigInt(tokensAllowance) < BigInt(web3.utils.toWei(userTokensStaked.toString())));
-        } else {
-            setShowApproveButton(false);
-        }
     }
 
     const isDisabledStake = () => {

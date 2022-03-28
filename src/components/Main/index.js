@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import contracts from "../../contracts";
 import NumberFormat from 'react-number-format';
 import Stake from '../Stake';
@@ -13,7 +13,7 @@ const Main = () => {
     const [userTokens, setUserTokens] = useState(null);
     const [stakedTokens, setStakedTokens] = useState(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const loadTokensFromAccount = async (chainId) => {
             const homeCoinAddress = contracts.addresses[chainId].homeCoin;
             if (homeCoinAddress !== "") {
@@ -22,16 +22,21 @@ const Main = () => {
                     .balanceOf(window.ethereum.selectedAddress)
                     .call({ from: window.ethereum.selectedAddress });   
                     
+                console.log('Tokens:', tokens);
                 setUserTokens(web3.utils.fromWei(tokens,'ether'));
             }
 
             const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
             if (stakeFarmAddress !== "") {
+                console.log(stakeFarmAddress);
+                console.log(contracts.stakeFarm);
+                console.log(window.ethereum.selectedAddress);
                 let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
                 const data = await stakeFarm.methods
                     .getUserData(window.ethereum.selectedAddress)
                     .call({ from: window.ethereum.selectedAddress });
                     
+                console.log('StakedTokens:', data);
                 setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
             } else {
                 setStakedTokens(0);
@@ -42,8 +47,11 @@ const Main = () => {
     },[chainId, account]);
 
     const showWalletMessage = (() => {
-        if ((userTokens == null) && (stakedTokens == null)) return true
-        else if ((userTokens == 0) && (stakedTokens == 0)) return true
+        const uTokens = userTokens === null ? 0 : userTokens;
+        const sTokens = stakedTokens === null ? 0 : stakedTokens;
+        console.log('userTokens', uTokens);
+        console.log('stakedTokens', sTokens);
+        if ((uTokens == 0) && (sTokens == 0)) return true;
         
         return false;
     });
