@@ -152,9 +152,9 @@ button:focus{
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
-input,textarea,form-control,
-input:hover,textarea:hover,form-control:hover,
-input:focus,textarea:focus,form-control:focus{
+input,select,textarea,form-control,
+input:hover,select:hover,textarea:hover,form-control:hover,
+input:focus,select:focus,textarea:focus,form-control:focus{
 	outline: 0 !important;
 	border:none !important;
     box-shadow: none !important;
@@ -1562,6 +1562,15 @@ a.animated-button.style2:hover:after {
 	text-align: center;
 }
 #section-subscribe1 input{
+	font-family: 'Poppins-Medium';
+	font-size: 16px;
+    color: #555556;
+	border-radius: 40px;
+	width: 100%;
+	max-width: 560px;
+	padding: 22px 35px;
+}
+#section-subscribe1 select{
 	font-family: 'Poppins-Medium';
 	font-size: 16px;
     color: #555556;
