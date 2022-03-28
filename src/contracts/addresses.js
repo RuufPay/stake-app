@@ -11,7 +11,7 @@ export default {
   },
   [chainsTypeId.POLYGON]: {
     homeCoin: "0x182f1d39df9460d7aef29afbc80bbd68ed0a41d5",
-    stakeFarm: "0x4660dcdbdcf4b5cbae20670364c888d63ad49e62"
+    stakeFarm: "0x8D4116AcC9e35Dd2745AAf893e663633375527d3"
   },
   [chainsTypeId.XDAI]: {
     homeCoin: "",
