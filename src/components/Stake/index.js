@@ -90,7 +90,6 @@ const Stake = ({userTokens}) => {
             setShowApproveSpinner(false);
             setApproveButtonDisabled(false);
             checkApproveButton();
-
         }
     }
 
@@ -107,13 +106,14 @@ const Stake = ({userTokens}) => {
                 .send({ from: window.ethereum.selectedAddress });
 
             console.log(tx);
-        } catch(e) {
-            console.log(e);
-        }
-        finally {
+
             setShowStakeSpinner(false);
             setStakeButtonDisabled(false);
             window.location.reload();
+        } catch(e) {
+            console.log(e);
+            setShowStakeSpinner(false);
+            setStakeButtonDisabled(false);
         }
     }
 
@@ -141,10 +141,10 @@ const Stake = ({userTokens}) => {
                             <p class="bolder">Enter the amount of Ruuf Coins you want to stake and the period of time.</p>
                             <select onChange={ event => changeStakeMonths(event.target.value) }>
                                 <option value="0">Select the period in months...</option>
-                                <option value="3">3 Months</option>
-                                <option value="6">6 Months</option>
-                                <option value="9">9 Months</option>
-                                <option value="12">12 Months</option>
+                                <option value="3">3 Months (2% rewards)</option>
+                                <option value="6">6 Months (6% rewards)</option>
+                                <option value="9">9 Months (11% rewards)</option>
+                                <option value="12">12 Months (18.32% rewards)</option>
                             </select>
                             <p></p>
                         </div>

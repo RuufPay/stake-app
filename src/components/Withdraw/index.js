@@ -72,11 +72,13 @@ const Withdraw = () => {
                 .send({ from: window.ethereum.selectedAddress });
 
             console.log(tx);
-        }
-        finally {
             setShowSpinner(false);
             setWithdrawalButtonDisabled(false);
             window.location.reload();
+        } catch(e) {
+            console.log(e);
+            setShowSpinner(false);
+            setWithdrawalButtonDisabled(false);
         }
     }
 
