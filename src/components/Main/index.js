@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import contracts from "../../contracts";
 import NumberFormat from 'react-number-format';
 import Stake from '../Stake';
@@ -17,7 +17,7 @@ const Main = () => {
     const [userTokens, setUserTokens] = useState(null);
     const [stakedTokens, setStakedTokens] = useState(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const loadTokensFromAccount = async (chainId) => {
             // Sometimes Metamask fails when loading, so keep trying max 5 fives
             let done = false;
