@@ -34,13 +34,19 @@ const Stake = ({userTokens}) => {
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
 
             if (homeCoinAddress !== "" && stakeFarmAddress !== "") {
-                const numAllowed = await homeCoin.methods
+                try {
+                    const numAllowed = await homeCoin.methods
                     .allowance(window.ethereum.selectedAddress, stakeFarmAddress)
                     .call({ from: window.ethereum.selectedAddress });
 
-                setTokensAllowance(numAllowed);
-                checkApproveButton();
-                changeHomeCoinsAmount(0);
+                    setTokensAllowance(numAllowed);
+                } catch(e) {
+                    console.log('getTokenAllowance:', e);
+                }
+                finally {
+                    checkApproveButton();
+                    changeHomeCoinsAmount(0);
+                }
             }
         }
 
@@ -58,12 +64,12 @@ const Stake = ({userTokens}) => {
     const changeHomeCoinsAmount = ((amount) => {
         setUserTokensStaked(amount);
         checkApproveButton();
-        setStakeButtonDisabled(amount === 0 || months === 0);
+        setStakeButtonDisabled(amount == 0 || months == 0);
     });
 
     const changeStakeMonths = (months) => {
         setMonths(months);
-        setStakeButtonDisabled(userTokensStaked === 0 || months === 0);
+        setStakeButtonDisabled(userTokensStaked == 0 || months == 0);
     }
 
     const approveStakeTokens = async () => {
@@ -82,7 +88,6 @@ const Stake = ({userTokens}) => {
 
             setTokensAllowance(max_tokens);
             setStakeButtonDisabled(false);
-            console.log(tx);
         } catch(e) {
             console.log(e);
         }
@@ -104,8 +109,6 @@ const Stake = ({userTokens}) => {
             const tx = await stakeFarm.methods
                 .stake(web3.utils.toWei(userTokensStaked.toString()), months)
                 .send({ from: window.ethereum.selectedAddress });
-
-            console.log(tx);
 
             setShowStakeSpinner(false);
             setStakeButtonDisabled(false);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import contracts from "../../contracts";
 import NumberFormat from 'react-number-format';
 import Stake from '../Stake';
@@ -7,51 +7,50 @@ import useWeb3Modal from "../../hooks/useWeb3Modal";
 
 const Web3 = require("web3");
 
+const sleep = async (millis) => {
+    return new Promise(resolve => setTimeout(resolve, millis));
+}
+
 const Main = () => {
     const [, , , chainId, account] = useWeb3Modal();
     const web3 = new Web3(window.ethereum);
     const [userTokens, setUserTokens] = useState(null);
     const [stakedTokens, setStakedTokens] = useState(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const loadTokensFromAccount = async (chainId) => {
-            try {
-                const homeCoinAddress = contracts.addresses[chainId].homeCoin;
-                if (homeCoinAddress !== "") {
-                    try {
+            // Sometimes Metamask fails when loading, so keep trying max 5 fives
+            let done = false;
+            let count = 0;
+            do {
+                try {
+                    const homeCoinAddress = contracts.addresses[chainId].homeCoin;
+                    if (homeCoinAddress !== "") {
                         let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
                         const tokens = await token.methods
                             .balanceOf(window.ethereum.selectedAddress)
                             .call({ from: window.ethereum.selectedAddress });   
                             
                         setUserTokens(web3.utils.fromWei(tokens,'ether'));
-                    } catch(e) {
-                        console.log('LoadToken:', e);
-                        let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
-                        const tokens = await token.methods
-                            .balanceOf(window.ethereum.selectedAddress)
-                            .call({ from: window.ethereum.selectedAddress });
-                        
-                        setUserTokens(web3.utils.fromWei(tokens,'ether'));
                     }
-                }
     
-                const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
-                if (stakeFarmAddress !== "") {
-                    try {
+                    const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
+                    if (stakeFarmAddress !== "") {
                         let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
                         const data = await stakeFarm.methods
                             .getUserData(window.ethereum.selectedAddress)
                             .call({ from: window.ethereum.selectedAddress });
                             
                         setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
-                    } catch(e) {
-                        console.log('GetUserData:', e);
                     }
+
+                    done = true;
+                } catch(e) {
+                    console.log('loadTokensFromAccount', e);
+                    count++;
+                    await sleep(3000);
                 }
-            } catch(e) {
-                console.log(e);
-            }
+            } while ((done == false) && (count < 5));
         } 
 
         loadTokensFromAccount(chainId);
