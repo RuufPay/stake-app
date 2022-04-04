@@ -12,6 +12,10 @@ import useWeb3Modal from "../../hooks/useWeb3Modal";
 
 const Web3 = require("web3");
 
+const sleep = async (millis) => {
+    return new Promise(resolve => setTimeout(resolve, millis));
+}
+
 const Stake = ({userTokens}) => {
     const [, , , chainId, account] = useWeb3Modal();
     const web3 = new Web3(window.ethereum);
@@ -34,19 +38,25 @@ const Stake = ({userTokens}) => {
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
 
             if (homeCoinAddress !== "" && stakeFarmAddress !== "") {
-                try {
-                    const numAllowed = await homeCoin.methods
-                    .allowance(window.ethereum.selectedAddress, stakeFarmAddress)
-                    .call({ from: window.ethereum.selectedAddress });
+                // Sometimes Metamask fails when loading, so keep trying max 5 fives
+                let done = false;
+                let count = 0;
+                do {
+                    try {
+                        const numAllowed = await homeCoin.methods
+                        .allowance(window.ethereum.selectedAddress, stakeFarmAddress)
+                        .call({ from: window.ethereum.selectedAddress });
 
-                    setTokensAllowance(numAllowed);
-                } catch(e) {
-                    console.log('getTokenAllowance:', e);
-                }
-                finally {
-                    checkApproveButton();
-                    changeHomeCoinsAmount(0);
-                }
+                        setTokensAllowance(numAllowed);
+                    } catch(e) {
+                        console.log('getTokenAllowance:', e);
+                        count++;
+                        await sleep(3000);
+                    }
+                } while ((done == false) && (count < 5));
+
+                checkApproveButton();
+                changeHomeCoinsAmount(0);
             }
         }
 
