@@ -16,6 +16,7 @@ const Main = () => {
     const web3 = new Web3(window.ethereum);
     const [userTokens, setUserTokens] = useState(null);
     const [stakedTokens, setStakedTokens] = useState(null);
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         const loadTokensFromAccount = async (chainId) => {
@@ -42,6 +43,7 @@ const Main = () => {
                             .call({ from: window.ethereum.selectedAddress });
                             
                         setStakedTokens(web3.utils.fromWei(data.homeTokens.toString(),'ether'));
+                        setUserData(data);
                     }
 
                     done = true;
@@ -99,7 +101,7 @@ const Main = () => {
             { Number(stakedTokens) === 0 ? (
                 <Stake userTokens={userTokens}/>
             ) : (
-                <Withdraw />
+                <Withdraw userData={userData} />
             ) }
         </div>
     );
