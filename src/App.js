@@ -40,7 +40,7 @@ const App = () => {
   });
 
   useLayoutEffect(() => {
-    if (contracts.addresses[chainId].stakeFarm !== "")
+    if (contracts.addresses[chainId]?.stakeFarm !== "")
       setStakeFarm(true);
     else
       setStakeFarm(false);

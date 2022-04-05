@@ -10,10 +10,13 @@ export const chainsTypeId = {
     POLYGON: '0x89',
     MUMBAI: '0x13881',
     XDAI: '0x64',
-    GANACHE: '0x539'
-  };
+    GANACHE: '0x539',
+    AVALANCHE: '0xa86a',
+    FUJI: '0xa869',
+    ARBITRUM: '0xa4b1',
+};
   
-  export const chainsNetworkName = {
+export const chainsNetworkName = {
     [chainsTypeId.NONE]: 'None',
     [chainsTypeId.ETH]: 'Ethereum',
     [chainsTypeId.ROPSTEN]: 'Ropsten',
@@ -25,5 +28,8 @@ export const chainsTypeId = {
     [chainsTypeId.POLYGON]: 'Polygon (Matic)',
     [chainsTypeId.MUMBAI]: 'Mumbai',
     [chainsTypeId.XDAI]: 'xDai',
-    [chainsTypeId.GANACHE]: 'Ganache'
-  };
+    [chainsTypeId.GANACHE]: 'Ganache',
+    [chainsTypeId.AVALANCHE]: 'Avalanche',
+    [chainsTypeId.FUJI]: 'Fuji',
+    [chainsTypeId.ARBITRUM]: 'Arbitrum'
+};

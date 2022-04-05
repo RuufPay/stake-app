@@ -32,8 +32,8 @@ const Stake = ({userTokens}) => {
 
     useEffect(() => {
         const getTokenAllowance = async () => {
-            const homeCoinAddress = contracts.addresses[chainId].homeCoin;
-            const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
+            const homeCoinAddress = contracts.addresses[chainId]?.homeCoin;
+            const stakeFarmAddress = contracts.addresses[chainId]?.stakeFarm;
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
 
             if (homeCoinAddress !== "" && stakeFarmAddress !== "") {
@@ -79,8 +79,8 @@ const Stake = ({userTokens}) => {
             setShowApproveSpinner(true);
             setApproveButtonDisabled(true);
 
-            const homeCoinAddress = contracts.addresses[chainId].homeCoin;
-            const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
+            const homeCoinAddress = contracts.addresses[chainId]?.homeCoin;
+            const stakeFarmAddress = contracts.addresses[chainId]?.stakeFarm;
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
             const max_tokens = 2**64 - 1;
 
@@ -105,7 +105,7 @@ const Stake = ({userTokens}) => {
             setShowStakeSpinner(true);
             setStakeButtonDisabled(true);
 
-            const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
+            const stakeFarmAddress = contracts.addresses[chainId]?.stakeFarm;
             const stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
             await stakeFarm.methods
                 .stake(web3.utils.toWei(userTokensStaked.toString()), months)

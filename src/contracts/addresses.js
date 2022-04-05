@@ -48,5 +48,17 @@ export default {
   [chainsTypeId.GANACHE]: {
     homeCoin: "",
     stakeFarm: ""
-  }
+  },
+  [chainsTypeId.AVALANCHE]: {
+    homeCoin: "",
+    stakeFarm: ""
+  },
+  [chainsTypeId.FUJI]: {
+    homeCoin: "",
+    stakeFarm: ""
+  },
+  [chainsTypeId.ARBITRUM]: {
+    homeCoin: "",
+    stakeFarm: ""
+  },
 };

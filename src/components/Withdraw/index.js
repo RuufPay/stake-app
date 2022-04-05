@@ -59,7 +59,7 @@ const Withdraw = (props) => {
             setShowSpinner(true);
             setWithdrawalButtonDisabled(true);
 
-            const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
+            const stakeFarmAddress = contracts.addresses[chainId]?.stakeFarm;
             const stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
             const tx = await stakeFarm.methods
                 .withdraw(window.ethereum.selectedAddress)

@@ -25,7 +25,7 @@ const Main = () => {
             let count = 0;
             do {
                 try {
-                    const homeCoinAddress = contracts.addresses[chainId].homeCoin;
+                    const homeCoinAddress = contracts.addresses[chainId]?.homeCoin;
                     if (homeCoinAddress !== "") {
                         let token = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
                         const tokens = await token.methods
@@ -35,7 +35,7 @@ const Main = () => {
                         setUserTokens(web3.utils.fromWei(tokens,'ether'));
                     }
     
-                    const stakeFarmAddress = contracts.addresses[chainId].stakeFarm;
+                    const stakeFarmAddress = contracts.addresses[chainId]?.stakeFarm;
                     if (stakeFarmAddress !== "") {
                         let stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
                         const data = await stakeFarm.methods
