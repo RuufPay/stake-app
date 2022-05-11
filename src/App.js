@@ -67,7 +67,7 @@ const App = () => {
                 </li>
               </ul>
             </div>
-            <a href="https://ruufpay.app/tutorial-staking.html" target="_blank" rel="noopener noreferrer" class="btn-1 shadow1 style3 bgscheme">Tutorial</a>
+            <a href="https://ruufpay.medium.com/ruufcoin-ruuf-web-staking-instructions-ac7103a2c55f" target="_blank" rel="noopener noreferrer" class="btn-1 shadow1 style3 bgscheme">Tutorial</a>
 
             { timeLeft.length ? "" :
             <WalletButton
