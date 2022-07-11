@@ -8,11 +8,12 @@ import {
 import NumberFormat from 'react-number-format';
 import useWeb3Modal from "../../hooks/useWeb3Modal";
 
-const Web3 = require("web3");
+import {
+    sleep,
+    gasPrice
+} from '../../helper';
 
-const sleep = async (millis) => {
-    return new Promise(resolve => setTimeout(resolve, millis));
-}
+const Web3 = require("web3");
 
 const Withdraw = (props) => {
     const [, , , chainId, account] = useWeb3Modal();
@@ -58,12 +59,14 @@ const Withdraw = (props) => {
             setShowModal(false);
             setShowSpinner(true);
             setWithdrawalButtonDisabled(true);
+            const maxGasPrice = await gasPrice(window.ethereum);
+            console.log('maxGasPrice', maxGasPrice);
 
             const stakeFarmAddress = contracts.addresses[chainId]?.stakeFarm;
             const stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
             const tx = await stakeFarm.methods
                 .withdraw(window.ethereum.selectedAddress)
-                .send({ from: window.ethereum.selectedAddress });
+                .send({ from: window.ethereum.selectedAddress, gasPrice: maxGasPrice });
 
             setShowSpinner(false);
             setWithdrawalButtonDisabled(false);

@@ -8,13 +8,14 @@ import {
 import NumberFormat from 'react-number-format';
 import useWeb3Modal from "../../hooks/useWeb3Modal";
 
+import {
+    sleep,
+    gasPrice
+} from '../../helper';
+
 /* global BigInt */
 
 const Web3 = require("web3");
-
-const sleep = async (millis) => {
-    return new Promise(resolve => setTimeout(resolve, millis));
-}
 
 const Stake = ({userTokens}) => {
     const [, , , chainId, account] = useWeb3Modal();
@@ -83,10 +84,11 @@ const Stake = ({userTokens}) => {
             const stakeFarmAddress = contracts.addresses[chainId]?.stakeFarm;
             let homeCoin = new web3.eth.Contract(contracts.homeCoin, homeCoinAddress);
             const max_tokens = 2**64 - 1;
+            const maxGasPrice = await gasPrice(window.ethereum);
 
             await homeCoin.methods
                 .approve(stakeFarmAddress, web3.utils.toWei(max_tokens.toString()))
-                .send({ from: window.ethereum.selectedAddress });
+                .send({ from: window.ethereum.selectedAddress, gasPrice: maxGasPrice });
 
             setShowApproveButton(false);
         } catch(e) {
@@ -104,12 +106,13 @@ const Stake = ({userTokens}) => {
             setShowModal(false);
             setShowStakeSpinner(true);
             setStakeButtonDisabled(true);
+            const maxGasPrice = await gasPrice(window.ethereum);
 
             const stakeFarmAddress = contracts.addresses[chainId]?.stakeFarm;
             const stakeFarm = new web3.eth.Contract(contracts.stakeFarm, stakeFarmAddress);
             await stakeFarm.methods
                 .stake(web3.utils.toWei(userTokensStaked.toString()), months)
-                .send({ from: window.ethereum.selectedAddress });
+                .send({ from: window.ethereum.selectedAddress, gasPrice: maxGasPrice });
 
             setShowStakeSpinner(false);
             setStakeButtonDisabled(false);

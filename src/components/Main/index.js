@@ -5,11 +5,11 @@ import Stake from '../Stake';
 import Withdraw from '../Withdraw';
 import useWeb3Modal from "../../hooks/useWeb3Modal";
 
-const Web3 = require("web3");
+import {
+    sleep
+} from '../../helper';
 
-const sleep = async (millis) => {
-    return new Promise(resolve => setTimeout(resolve, millis));
-}
+const Web3 = require("web3");
 
 const Main = () => {
     const [, , , chainId, account] = useWeb3Modal();
